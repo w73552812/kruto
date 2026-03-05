@@ -29,7 +29,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%}
-body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;overflow-x:hidden;transition:background .3s,color .3s}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);height:100vh;overflow:hidden;transition:background .3s,color .3s}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--brd);border-radius:99px}
 
 /* ── LOADER ── */
@@ -67,8 +67,8 @@ body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);min-
 .scard .sub{color:var(--txt2);font-size:14px;margin-bottom:28px}
 
 /* ── APP ── */
-#app{display:none;min-height:100vh}
-.layout{display:grid;grid-template-columns:260px 1fr;grid-template-rows:60px 1fr;min-height:100vh}
+#app{display:none;height:100vh;overflow:hidden}
+.layout{display:grid;grid-template-columns:260px 1fr;grid-template-rows:60px 1fr;height:100vh;overflow:hidden}
 
 /* ── NAVBAR ── */
 .nb{grid-column:1/-1;display:flex;align-items:center;gap:14px;background:var(--sur);border-bottom:1px solid var(--brd);padding:0 20px;position:sticky;top:0;z-index:200}
@@ -199,7 +199,7 @@ body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);min-
 .irow:last-child{border-bottom:none}.irow .ic2{color:var(--txt3);width:18px;text-align:center}
 
 /* ── MESSAGES ── */
-.mlayout{display:grid;grid-template-columns:280px 1fr;height:calc(100vh - 60px)}
+.mlayout{display:grid;grid-template-columns:280px 1fr;height:100%}
 .clist{border-right:1px solid var(--brd);overflow-y:auto;background:var(--sur)}
 .clhdr{padding:14px;border-bottom:1px solid var(--brd)}
 .clhdr h2{font-size:17px;font-weight:600;margin-bottom:10px}
@@ -209,7 +209,7 @@ body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);min-
 .citem2 img{width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--sur3)}
 .cmeta{flex:1;min-width:0}.cmeta .cn{font-size:14px;font-weight:600}
 .cmeta .cp{font-size:12px;color:var(--txt3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:2px}
-.cwin{display:flex;flex-direction:column;background:var(--bg)}
+.cwin{display:flex;flex-direction:column;background:var(--bg);height:100%;overflow:hidden}
 .cwh{display:flex;align-items:center;gap:11px;padding:12px 18px;background:var(--sur);border-bottom:1px solid var(--brd)}
 .cwh img{width:38px;height:38px;border-radius:50%;object-fit:cover;background:var(--sur3)}
 .cwh .cn2{font-weight:600;font-size:14px}.cwh .cs{font-size:11px;color:var(--ok)}
@@ -284,9 +284,10 @@ body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);min-
 
 .empty{text-align:center;padding:56px 20px;color:var(--txt3)}
 .empty .ei{font-size:44px;margin-bottom:10px;opacity:.4}
-.page{display:none!important}
-.page.on{display:block!important}
-#page-feed.on{display:flex!important;justify-content:center}
+.page{display:none!important;height:100%;overflow-y:auto}
+.page.on{display:block!important;height:100%;overflow-y:auto}
+#page-feed.on{display:flex!important;justify-content:center;height:100%;overflow-y:auto}
+#page-messages.on{overflow:hidden!important}
 input[type="file"]{display:none}
 
 /* ── THEME SWITCHER PANEL ── */
@@ -391,7 +392,7 @@ input[type="file"]{display:none}
     </aside>
 
     <!-- MAIN -->
-    <main style="overflow-y:auto;max-height:calc(100vh - 60px)" id="main-scroll">
+    <main style="overflow:hidden;height:calc(100vh - 60px);position:relative" id="main-scroll">
 
       <!-- FEED -->
       <div class="page" id="page-feed">
