@@ -284,7 +284,9 @@ body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);min-
 
 .empty{text-align:center;padding:56px 20px;color:var(--txt3)}
 .empty .ei{font-size:44px;margin-bottom:10px;opacity:.4}
-.page{display:none}.page.on{display:block}
+.page{display:none!important}
+.page.on{display:block!important}
+#page-feed.on{display:flex!important;justify-content:center}
 input[type="file"]{display:none}
 
 /* ── THEME SWITCHER PANEL ── */
@@ -392,7 +394,7 @@ input[type="file"]{display:none}
     <main style="overflow-y:auto;max-height:calc(100vh - 60px)" id="main-scroll">
 
       <!-- FEED -->
-      <div class="page on" id="page-feed" style="display:flex;justify-content:center">
+      <div class="page" id="page-feed">
         <div class="feed">
           <div class="composer">
             <div class="ctop">
@@ -684,6 +686,8 @@ async function doSetup(){
 // ── LAUNCH ──
 async function launch(){
   scr('app');navAva();
+  // Hide all pages initially
+  document.querySelectorAll('.page').forEach(p=>{p.style.display='none';});
   await loadUsers();miniUsers();
   renderPeople();renderChats();startFeed();
   gpage('feed');
@@ -700,8 +704,10 @@ async function ensureUser(uid){
 
 // ── PAGES ──
 function gpage(n){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
-  g('page-'+n).classList.add('on');
+  document.querySelectorAll('.page').forEach(p=>{p.classList.remove('on');p.style.display='none';});
+  const activePage=g('page-'+n);
+  activePage.classList.add('on');
+  activePage.style.display = n==='feed' ? 'flex' : 'block';
   ['feed','msg','ppl'].forEach(x=>{
     const pg={'feed':'feed','msg':'messages','ppl':'people'}[x];
     [g('nb-'+x),g('si-'+x)].forEach(b=>b&&b.classList.toggle('on',pg===n));
@@ -713,6 +719,7 @@ function goMyProfile(){goPro(me.uid);}
 
 async function goPro(uid){
   gpage('profile');
+  if(g('page-profile'))g('page-profile').style.display='block';
   g('profcont').innerHTML='<div style="padding:80px;text-align:center"><div class="spin" style="margin:0 auto"></div></div>';
   await ensureUser(uid);await loadUsers();
   const user=byUid(uid);
