@@ -406,13 +406,14 @@ import { getFirestore, doc, setDoc, getDoc, getDocs, addDoc, updateDoc, deleteDo
          collection, query, orderBy, limit, onSnapshot, where,
          serverTimestamp, arrayUnion, arrayRemove }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-import { getStorage, ref as sref, uploadBytesResumable, getDownloadURL }
-  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
+
 
 const FB  = initializeApp({apiKey:"AIzaSyC0bH024Yqj4MB8ZNfEYEPvww1az6z3R94",authDomain:"svyaz-social.firebaseapp.com",projectId:"svyaz-social",storageBucket:"svyaz-social.firebasestorage.app",messagingSenderId:"417591966803",appId:"1:417591966803:web:9343069665626c0fae5aa6"});
 const auth = getAuth(FB);
 const db   = getFirestore(FB);
-const st   = getStorage(FB);
+// Cloudinary config
+const CL_CLOUD = 'ds3x2nnb7';
+const CL_PRESET = 'ml_default';
 const gp   = new GoogleAuthProvider();
 
 // ── state ──
@@ -895,12 +896,21 @@ function doSearch(q){
 }
 
 // ══ UPLOAD ══
-function upload(file,path,onP){
+async function upload(file,_path,onP){
+  const fd=new FormData();
+  fd.append('file',file);
+  fd.append('upload_preset',CL_PRESET);
   return new Promise((res,rej)=>{
-    const r=sref(st,path);
-    const t=uploadBytesResumable(r,file);
-    t.on('state_changed',s=>{if(onP)onP(s.bytesTransferred/s.totalBytes*100);},rej,
-      async()=>res(await getDownloadURL(t.snapshot.ref)));
+    const xhr=new XMLHttpRequest();
+    xhr.open('POST',`https://api.cloudinary.com/v1_1/${CL_CLOUD}/auto/upload`);
+    xhr.upload.onprogress=e=>{if(onP&&e.lengthComputable)onP(e.loaded/e.total*100);};
+    xhr.onload=()=>{
+      const d=JSON.parse(xhr.responseText);
+      if(xhr.status===200) res(d.secure_url);
+      else rej(new Error(d.error?.message||'Upload failed'));
+    };
+    xhr.onerror=()=>rej(new Error('Network error'));
+    xhr.send(fd);
   });
 }
 
