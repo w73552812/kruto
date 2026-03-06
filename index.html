@@ -12,17 +12,14 @@
 [data-theme="light"]{--bg:#f0f2f7;--sur:#ffffff;--sur2:#f5f7fb;--sur3:#eaecf2;--brd:#d8dce8;--txt:#1a1d27;--txt2:#5a6180;--txt3:#9099b0;--sh:0 4px 20px rgba(0,0,0,.08);}
 [data-theme="amoled"]{--bg:#000000;--sur:#0a0a0a;--sur2:#111111;--sur3:#181818;--brd:#222222;--txt:#ffffff;--txt2:#888888;--txt3:#444444;--sh:0 4px 30px rgba(0,0,0,.8);}
 :root{--ac:#4f8ef7;--ac2:#7c5cfc;--ag:linear-gradient(135deg,#4f8ef7,#7c5cfc);--ok:#3ecf8e;--er:#f75c5c;--warn:#f7a84f;--r:16px;--rs:10px;}
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%}
+*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%}
 body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);height:100vh;overflow:hidden;transition:background .3s,color .3s}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--brd);border-radius:99px}
 
-/* LOADER */
 #loader{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9999;flex-direction:column;gap:20px;transition:opacity .4s}
 .spin{width:36px;height:36px;border:3px solid var(--brd);border-top-color:var(--ac);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* AUTH */
 #auth{min-height:100vh;display:none;align-items:center;justify-content:center;background:var(--bg);position:relative;overflow:hidden}
 #auth::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(79,142,247,.12)0%,transparent 70%);top:-200px;left:-200px;pointer-events:none}
 #auth::after{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(124,92,252,.1)0%,transparent 70%);bottom:-150px;right:-100px;pointer-events:none}
@@ -45,18 +42,15 @@ body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);heig
 .gbtn{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--sur2);border:1px solid var(--brd);border-radius:var(--rs);padding:13px;color:var(--txt);font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:border-color .2s;width:100%}
 .gbtn:hover{border-color:var(--ac)}
 
-/* SETUP */
 #setup{min-height:100vh;display:none;align-items:center;justify-content:center;background:var(--bg)}
 .scard{background:var(--sur);border:1px solid var(--brd);border-radius:24px;padding:48px;width:500px;max-width:95vw;animation:fadeUp .5s ease;max-height:92vh;overflow-y:auto}
 .scard h2{font-family:'Unbounded',sans-serif;font-size:22px;margin-bottom:8px}
 .scard .sub{color:var(--txt2);font-size:14px;margin-bottom:28px}
 
-/* APP */
 #app{display:none;height:100vh;overflow:hidden}
 .layout{display:grid;grid-template-columns:260px 1fr;grid-template-rows:60px 1fr;height:100vh;overflow:hidden}
 
-/* NAVBAR */
-.nb{grid-column:1/-1;display:flex;align-items:center;gap:14px;background:var(--sur);border-bottom:1px solid var(--brd);padding:0 20px;position:sticky;top:0;z-index:200}
+.nb{grid-column:1/-1;display:flex;align-items:center;gap:14px;background:var(--sur);border-bottom:1px solid var(--brd);padding:0 20px;z-index:200}
 .nlogo{font-family:'Unbounded',sans-serif;font-weight:700;font-size:20px;background:var(--ag);-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap;cursor:pointer;text-decoration:none}
 .nsrch{flex:1;max-width:300px;position:relative}
 .nsrch input{width:100%;background:var(--sur2);border:1px solid var(--brd);border-radius:99px;padding:8px 16px 8px 38px;color:var(--txt);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s}
@@ -69,28 +63,28 @@ body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);heig
 .nava:hover{border-color:var(--ac)}
 .thm-btn{background:var(--sur2);border:1px solid var(--brd);border-radius:99px;padding:7px 10px;cursor:pointer;font-size:15px;transition:all .2s;display:flex;align-items:center}
 .thm-btn:hover{border-color:var(--ac)}
+.thm-wrap{position:relative}
+.thm-panel{position:absolute;top:calc(100% + 6px);right:0;background:var(--sur);border:1px solid var(--brd);border-radius:var(--rs);padding:8px;display:none;flex-direction:column;gap:4px;min-width:150px;box-shadow:var(--sh);z-index:300}
+.thm-panel.open{display:flex}
+.thm-opt{display:flex;align-items:center;gap:9px;padding:8px 11px;border-radius:7px;cursor:pointer;font-size:13px;transition:background .15s;border:none;background:none;color:var(--txt);width:100%;text-align:left;font-family:inherit}
+.thm-opt:hover{background:var(--sur2)}
 
-/* SIDEBAR */
 .sleft{background:var(--sur);border-right:1px solid var(--brd);padding:16px;display:flex;flex-direction:column;gap:2px;height:calc(100vh - 60px);overflow-y:auto}
 .nitem{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:var(--rs);cursor:pointer;color:var(--txt2);font-size:14px;font-weight:500;transition:all .2s;border:none;background:none;width:100%;text-align:left}
 .nitem:hover{background:var(--sur2);color:var(--txt)}.nitem.on{background:rgba(79,142,247,.12);color:var(--ac)}
 .nitem .ic{font-size:17px;width:22px;text-align:center}
 .nsec{font-size:11px;font-weight:700;color:var(--txt3);text-transform:uppercase;letter-spacing:1px;padding:14px 13px 5px}
-.umini{display:flex;align-items:center;gap:9px;padding:7px 13px;border-radius:var(--rs);cursor:pointer;transition:background .2s;position:relative}
+.umini{display:flex;align-items:center;gap:9px;padding:7px 13px;border-radius:var(--rs);cursor:pointer;transition:background .2s}
 .umini:hover{background:var(--sur2)}
 .umini img{width:30px;height:30px;border-radius:50%;object-fit:cover;background:var(--sur3)}
 .umini .nm{font-size:13px;font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.odot{width:8px;height:8px;border-radius:50%;background:var(--ok);border:2px solid var(--sur);flex-shrink:0}
-.odot.off{background:var(--txt3)}
 
-/* MAIN / PAGES */
 #main-scroll{overflow:hidden;height:calc(100vh - 60px);position:relative}
 .page{display:none !important;position:absolute;top:0;left:0;right:0;bottom:0;overflow-y:auto}
 .page.on{display:block !important}
 #page-feed.on{display:flex !important;justify-content:center}
 #page-messages.on{overflow:hidden !important}
 
-/* FEED */
 .feed{padding:20px;display:flex;flex-direction:column;gap:14px;max-width:680px;width:100%;padding-bottom:60px}
 .composer{background:var(--sur);border:1px solid var(--brd);border-radius:var(--r);padding:18px}
 .ctop{display:flex;gap:10px;align-items:flex-start}
@@ -109,7 +103,6 @@ body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);heig
 .upbar{height:3px;background:var(--sur3);border-radius:99px;margin-top:7px;overflow:hidden;display:none}
 .upbar-i{height:100%;background:var(--ag);border-radius:99px;transition:width .3s}
 
-/* POST */
 .post{background:var(--sur);border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;animation:fadeUp .3s ease}
 .ph{display:flex;align-items:center;gap:11px;padding:14px 18px 10px}
 .pava{width:40px;height:40px;border-radius:50%;object-fit:cover;cursor:pointer;flex-shrink:0;background:var(--sur3)}
@@ -132,21 +125,22 @@ body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);heig
 .pmedia.many{grid-template-columns:1fr 1fr 1fr}.pmedia.many img,.pmedia.many video{width:100%;height:155px;object-fit:cover}
 .pmedia img,.pmedia video{cursor:pointer;display:block;transition:filter .15s}.pmedia img:hover{filter:brightness(.88)}
 .pactions{display:flex;align-items:center;gap:2px;padding:8px 14px;border-top:1px solid var(--brd)}
+/* FIXED: use data attributes for like state, not just class */
 .acbtn{background:none;border:none;color:var(--txt3);font-size:13px;cursor:pointer;display:flex;align-items:center;gap:5px;padding:7px 10px;border-radius:var(--rs);transition:all .2s;font-family:inherit;white-space:nowrap;user-select:none}
-.acbtn:hover{background:var(--sur2);color:var(--txt)}
-.acbtn.lk{color:var(--er) !important}.acbtn.dlk{color:var(--warn) !important}
+.acbtn:hover{background:var(--sur2)}
+.acbtn[data-active="like"]{color:var(--er)}
+.acbtn[data-active="dislike"]{color:var(--warn)}
 .sp2{flex:1}
-.plink{font-size:12px;color:var(--txt3);text-decoration:none;padding:7px 10px;border-radius:var(--rs);transition:all .2s;display:flex;align-items:center;gap:4px;cursor:pointer;background:none;border:none;font-family:inherit}
-.plink:hover{background:var(--sur2);color:var(--ac)}
+.plink-btn{background:none;border:none;font-size:12px;color:var(--txt3);padding:7px 10px;border-radius:var(--rs);cursor:pointer;display:flex;align-items:center;gap:4px;font-family:inherit;transition:all .2s}
+.plink-btn:hover{background:var(--sur2);color:var(--ac)}
 
-/* COMMENTS */
 .csec{border-top:1px solid var(--brd)}
 .cirow{display:flex;gap:9px;align-items:center;padding:12px 18px}
 .cinp{flex:1;background:var(--sur2);border:1px solid var(--brd);border-radius:99px;padding:9px 16px;color:var(--txt);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s}
 .cinp:focus{border-color:var(--ac)}.cinp::placeholder{color:var(--txt3)}
 .csbtn{background:var(--ac);border:none;border-radius:50%;width:34px;height:34px;color:#fff;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:15px}
 .csbtn:hover{opacity:.85}
-.clist-wrap{padding:0 18px 12px;display:flex;flex-direction:column;gap:0}
+.clist-wrap{padding:0 18px 12px;display:flex;flex-direction:column}
 .citem{display:flex;gap:9px;padding:10px 0;border-bottom:1px solid var(--brd)}
 .citem:last-child{border-bottom:none}
 .cava{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;cursor:pointer;background:var(--sur3)}
@@ -157,27 +151,26 @@ body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);heig
 .ctxt{font-size:14px;line-height:1.5;word-break:break-word}
 .cactions{display:flex;align-items:center;gap:2px;margin-top:4px}
 .cacbtn{background:none;border:none;color:var(--txt3);font-size:12px;cursor:pointer;display:flex;align-items:center;gap:3px;padding:3px 7px;border-radius:6px;transition:all .2s;font-family:inherit;user-select:none}
-.cacbtn:hover{background:var(--sur2);color:var(--txt)}
-.cacbtn.lk{color:var(--er) !important}.cacbtn.dlk{color:var(--warn) !important}
+.cacbtn:hover{background:var(--sur2)}
+.cacbtn[data-active="like"]{color:var(--er)}
+.cacbtn[data-active="dislike"]{color:var(--warn)}
 .creply-btn{font-size:11px;color:var(--txt3);cursor:pointer;margin-top:4px;display:inline-flex;align-items:center;gap:3px;transition:color .2s;background:none;border:none;font-family:inherit;padding:3px 7px;border-radius:6px}
 .creply-btn:hover{color:var(--ac);background:var(--sur2)}
 .reply-quote{background:var(--sur2);border-left:3px solid var(--ac);border-radius:0 6px 6px 0;padding:6px 10px;margin-bottom:5px;font-size:13px;color:var(--txt2)}
 .reply-author{font-weight:600;font-size:12px;color:var(--ac);margin-bottom:2px}
-.replies{padding-left:20px;border-left:2px solid var(--brd);margin-top:6px;display:flex;flex-direction:column;gap:0}
-.reply-banner{display:none;padding:6px 18px;background:rgba(79,142,247,.08);border-top:1px solid var(--brd);font-size:12px;color:var(--ac);align-items:center;gap:8px}
-.show-more-btn{padding:6px 18px;font-size:13px;color:var(--ac);cursor:pointer;background:none;border:none;font-family:inherit;text-align:left;width:100%}
+.replies{padding-left:20px;border-left:2px solid var(--brd);margin-top:6px;display:flex;flex-direction:column}
+.reply-banner{display:none;padding:8px 18px;background:rgba(79,142,247,.07);border-top:1px solid rgba(79,142,247,.2);font-size:12px;color:var(--ac);align-items:center;gap:8px}
+.show-more-btn{padding:8px 18px;font-size:13px;color:var(--ac);cursor:pointer;background:none;border:none;font-family:inherit;text-align:left;width:100%;transition:background .15s}
 .show-more-btn:hover{background:var(--sur2)}
 
-/* SINGLE POST */
 .single-post-wrap{max-width:680px;margin:0 auto;padding:20px}
 
-/* PROFILE */
 .pcover{height:200px;position:relative;overflow:hidden}
 .pcover img,.pcover .covbg{width:100%;height:100%;object-fit:cover}
 .pinfobar{background:var(--sur);border-bottom:1px solid var(--brd);padding:0 28px;position:relative}
 .pavawr{position:absolute;top:-60px;left:28px}
 .pavawr img{width:112px;height:112px;border-radius:50%;object-fit:cover;border:4px solid var(--sur);background:var(--sur3)}
-.pdets{padding:14px 0 0 152px;display:flex;align-items:flex-end;justify-content:space-between}
+.pdets{padding:14px 0 0 152px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .pn{font-family:'Unbounded',sans-serif;font-size:20px;font-weight:600}
 .ph2{font-size:13px;color:var(--txt3);margin-top:2px}
 .pacts{display:flex;gap:7px;padding-bottom:14px;flex-wrap:wrap}
@@ -188,16 +181,12 @@ body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);heig
 .ptab{padding:12px 18px;cursor:pointer;font-size:14px;font-weight:500;color:var(--txt2);border-bottom:2px solid transparent;transition:all .2s}
 .ptab.on{color:var(--ac);border-bottom-color:var(--ac)}
 .pgrid{display:grid;grid-template-columns:260px 1fr;gap:18px;padding:18px 20px}
+@media(max-width:700px){.pgrid{grid-template-columns:1fr}}
 .psc{background:var(--sur);border:1px solid var(--brd);border-radius:var(--r);padding:18px;margin-bottom:14px}
 .psc h3{font-size:13px;font-weight:600;margin-bottom:12px;color:var(--txt2)}
 .irow{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--brd);font-size:13px}
 .irow:last-child{border-bottom:none}.irow .ic2{color:var(--txt3);width:18px;text-align:center}
-.online-badge{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--ok);margin-top:2px}
-.online-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--ok);display:inline-block}
-.offline-badge{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--txt3);margin-top:2px}
-.offline-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--txt3);display:inline-block}
 
-/* MESSAGES */
 .mlayout{display:grid;grid-template-columns:280px 1fr;height:100%;overflow:hidden}
 .conv-list{border-right:1px solid var(--brd);overflow-y:auto;background:var(--sur)}
 .clhdr{padding:14px;border-bottom:1px solid var(--brd)}
@@ -213,7 +202,6 @@ body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);heig
 .cwh{display:flex;align-items:center;gap:11px;padding:12px 18px;background:var(--sur);border-bottom:1px solid var(--brd)}
 .cwh img{width:38px;height:38px;border-radius:50%;object-fit:cover;background:var(--sur3)}
 .cwh .cn2{font-weight:600;font-size:14px}
-.cwh .cs{font-size:11px}
 .cmsgs{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:10px}
 .mbub{display:flex;gap:9px;max-width:72%}
 .mbub.own{flex-direction:row-reverse;align-self:flex-end}
@@ -226,9 +214,7 @@ body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);heig
 .cinp2{flex:1;background:var(--sur2);border:1px solid var(--brd);border-radius:14px;padding:10px 14px;color:var(--txt);font-family:inherit;font-size:14px;outline:none;resize:none;max-height:120px;transition:border-color .2s}
 .cinp2:focus{border-color:var(--ac)}.cinp2::placeholder{color:var(--txt3)}
 .csendbtn{background:var(--ag);border:none;border-radius:11px;padding:10px 16px;color:#fff;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center}
-.csendbtn:hover{opacity:.85}
 
-/* PEOPLE */
 .pgrid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;padding:20px}
 .pcard{background:var(--sur);border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;transition:transform .2s,box-shadow .2s}
 .pcard:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.2)}
@@ -243,27 +229,25 @@ body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);heig
 .cbtn2{background:var(--sur2);border:1px solid var(--brd);border-radius:6px;padding:5px 7px;color:var(--txt3);font-size:11px;cursor:pointer;font-family:inherit;transition:all .2s}
 .cbtn2:hover{border-color:var(--ac);color:var(--ac)}
 
-/* LIGHTBOX */
 .lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:1000;align-items:center;justify-content:center;flex-direction:column;gap:12px}
 .lb.on{display:flex}
+.lb img,.lb video{max-width:90vw;max-height:85vh;border-radius:var(--r)}
 .lbx{position:fixed;top:18px;right:22px;background:rgba(255,255,255,.1);border:none;color:#fff;font-size:22px;cursor:pointer;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center}
 
-/* CROP MODAL — uses Cropper.js */
-.crop-container{width:100%;height:360px;overflow:hidden;border-radius:var(--rs);background:#000;position:relative}
+/* Cropper */
+.crop-container{width:100%;height:380px;overflow:hidden;border-radius:var(--rs);background:#000}
 .crop-container img{display:block;max-width:100%}
 
-/* TOAST */
-.twrap{position:fixed;bottom:22px;right:22px;z-index:2000;display:flex;flex-direction:column;gap:7px}
-.toast{background:var(--sur);border:1px solid var(--brd);border-radius:var(--rs);padding:12px 16px;font-size:14px;box-shadow:var(--sh);animation:toastIn .3s ease;display:flex;align-items:center;gap:9px;min-width:220px}
+.twrap{position:fixed;bottom:22px;right:22px;z-index:2000;display:flex;flex-direction:column;gap:7px;pointer-events:none}
+.toast{background:var(--sur);border:1px solid var(--brd);border-radius:var(--rs);padding:12px 16px;font-size:14px;box-shadow:var(--sh);animation:toastIn .3s ease;display:flex;align-items:center;gap:9px;min-width:220px;pointer-events:auto}
 .toast.ok{border-left:3px solid var(--ok)}.toast.err{border-left:3px solid var(--er)}.toast.info{border-left:3px solid var(--ac)}
 
-/* MODAL */
 .movl{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:500;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
 .movl.on{display:flex}
 .modal{background:var(--sur);border:1px solid var(--brd);border-radius:20px;width:490px;max-width:95vw;max-height:90vh;overflow-y:auto;animation:fadeUp .3s ease}
 .mhdr{padding:18px 22px;border-bottom:1px solid var(--brd);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--sur);z-index:1}
 .mhdr h3{font-size:17px;font-weight:600}
-.mcls{background:none;border:none;color:var(--txt3);font-size:19px;cursor:pointer;padding:3px;border-radius:5px}
+.mcls{background:none;border:none;color:var(--txt3);font-size:19px;cursor:pointer;padding:3px;border-radius:5px;line-height:1}
 .mcls:hover{color:var(--txt);background:var(--sur2)}
 .mbody{padding:22px}
 .mfoot{padding:14px 22px;border-top:1px solid var(--brd);display:flex;justify-content:flex-end;gap:9px;position:sticky;bottom:0;background:var(--sur)}
@@ -271,24 +255,21 @@ body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--txt);heig
 .sbtn:hover{border-color:var(--ac)}
 .ef{display:flex;flex-direction:column;gap:5px;margin-bottom:13px}
 .ef label{font-size:12px;font-weight:600;color:var(--txt2);text-transform:uppercase;letter-spacing:.7px}
-.ef input,.ef textarea,.ef select{background:var(--sur2);border:1px solid var(--brd);border-radius:var(--rs);padding:10px 13px;color:var(--txt);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s}
+.ef input,.ef textarea{background:var(--sur2);border:1px solid var(--brd);border-radius:var(--rs);padding:10px 13px;color:var(--txt);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s}
 .ef input:focus,.ef textarea:focus{border-color:var(--ac)}.ef textarea{resize:vertical;min-height:76px}
 .avrow{display:flex;gap:11px;align-items:center}
 .avrow img{width:52px;height:52px;border-radius:50%;object-fit:cover;background:var(--sur3)}
 .ulbl{background:var(--sur2);border:1px solid var(--brd);border-radius:var(--rs);padding:7px 12px;color:var(--txt2);font-size:13px;cursor:pointer;font-family:inherit;transition:all .2s;display:inline-block}
 .ulbl:hover{border-color:var(--ac);color:var(--ac)}
 
-/* THEME PANEL */
-.thm-panel{position:absolute;top:100%;right:0;background:var(--sur);border:1px solid var(--brd);border-radius:var(--rs);padding:8px;display:none;flex-direction:column;gap:4px;min-width:150px;box-shadow:var(--sh);z-index:300}
-.thm-panel.open{display:flex}
-.thm-opt{display:flex;align-items:center;gap:9px;padding:8px 11px;border-radius:7px;cursor:pointer;font-size:13px;transition:background .15s;border:none;background:none;color:var(--txt);width:100%;text-align:left;font-family:inherit}
-.thm-opt:hover{background:var(--sur2)}.thm-opt.on{color:var(--ac)}
-.thm-wrap{position:relative}
+/* online dot helper */
+.ava-wrap{position:relative;flex-shrink:0}
+.ava-wrap .odot{position:absolute;bottom:1px;right:1px;width:10px;height:10px;border-radius:50%;border:2px solid var(--sur)}
+.odot-on{background:var(--ok)}.odot-off{background:var(--txt3)}
 
 .empty{text-align:center;padding:56px 20px;color:var(--txt3)}
 .empty .ei{font-size:44px;margin-bottom:10px;opacity:.4}
 input[type="file"]{display:none}
-
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 @keyframes toastIn{from{opacity:0;transform:translateX(36px)}to{opacity:1;transform:translateX(0)}}
 </style>
@@ -358,9 +339,9 @@ input[type="file"]{display:none}
         <button class="nbtn" id="nb-feed" onclick="gpage('feed')">🏠 Лента</button>
         <button class="nbtn" id="nb-msg" onclick="gpage('messages')">💬 Чат</button>
         <button class="nbtn" id="nb-ppl" onclick="gpage('people')">👥 Люди</button>
-        <img class="nava" id="nava" src="" onclick="goMyProfile()">
+        <img class="nava" id="nava" src="" onclick="goMyProfile()" alt="">
         <div class="thm-wrap">
-          <button class="thm-btn" onclick="toggleThmPanel()" title="Тема">🎨</button>
+          <button class="thm-btn" onclick="toggleThmPanel()">🎨</button>
           <div class="thm-panel" id="thm-panel">
             <button class="thm-opt" onclick="setTheme('dark')">🌙 Тёмная</button>
             <button class="thm-opt" onclick="setTheme('light')">☀️ Светлая</button>
@@ -370,7 +351,6 @@ input[type="file"]{display:none}
         <button class="nbtn" onclick="doLogout()" style="color:var(--er)">Выйти</button>
       </div>
     </nav>
-
     <aside class="sleft">
       <button class="nitem" id="si-feed" onclick="gpage('feed')"><span class="ic">🏠</span> Лента</button>
       <button class="nitem" id="si-profile" onclick="goMyProfile()"><span class="ic">👤</span> Профиль</button>
@@ -379,14 +359,12 @@ input[type="file"]{display:none}
       <div class="nsec">Пользователи</div>
       <div id="umini"></div>
     </aside>
-
     <main id="main-scroll">
-      <!-- FEED -->
       <div class="page" id="page-feed">
         <div class="feed">
           <div class="composer">
             <div class="ctop">
-              <img id="cava" style="width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--sur3)" src="">
+              <img id="cava" style="width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--sur3)" src="" alt="">
               <textarea id="ptxt" placeholder="Что у вас нового?"></textarea>
             </div>
             <div id="mprev" class="mprev"></div>
@@ -401,19 +379,13 @@ input[type="file"]{display:none}
           <div id="posts"></div>
         </div>
       </div>
-
-      <!-- PROFILE -->
       <div class="page" id="page-profile"><div id="profcont"></div></div>
-
-      <!-- SINGLE POST -->
       <div class="page" id="page-post">
         <div class="single-post-wrap">
-          <button class="sbtn" style="margin-bottom:14px" onclick="history.back()">← Назад</button>
+          <button class="sbtn" style="margin-bottom:14px" onclick="gpage('feed')">← Назад</button>
           <div id="single-post-cont"></div>
         </div>
       </div>
-
-      <!-- MESSAGES -->
       <div class="page" id="page-messages">
         <div class="mlayout">
           <div class="conv-list">
@@ -427,8 +399,6 @@ input[type="file"]{display:none}
           </div>
         </div>
       </div>
-
-      <!-- PEOPLE -->
       <div class="page" id="page-people">
         <div style="padding:20px 20px 0"><h2 style="font-size:21px;font-weight:700;margin-bottom:4px">Люди</h2><p style="color:var(--txt2);font-size:14px">Найдите новых друзей</p></div>
         <div class="pgrid2" id="pgrid"></div>
@@ -437,26 +407,20 @@ input[type="file"]{display:none}
   </div>
 </div>
 
-<!-- LIGHTBOX -->
-<div class="lb" id="lb" onclick="cLb()">
-  <button class="lbx" onclick="cLb()">✕</button>
-  <div id="lbc"></div>
-</div>
+<div class="lb" id="lb" onclick="cLb()"><button class="lbx" onclick="event.stopPropagation();cLb()">✕</button><div id="lbc" onclick="event.stopPropagation()"></div></div>
 
 <!-- CROP MODAL -->
 <div class="movl" id="crop-modal">
-  <div class="modal" style="width:540px">
+  <div class="modal" style="width:560px">
     <div class="mhdr"><h3>✂️ Кадрировать фото</h3><button class="mcls" onclick="cancelCrop()">✕</button></div>
     <div class="mbody" style="padding:16px">
-      <div class="crop-container">
-        <img id="crop-img" src="">
-      </div>
+      <div class="crop-container"><img id="crop-img" src="" alt=""></div>
       <div style="display:flex;gap:8px;margin-top:12px;justify-content:center;flex-wrap:wrap">
-        <button class="sbtn" onclick="cropperInst&&cropperInst.rotate(-90)" style="font-size:13px">↺ −90°</button>
-        <button class="sbtn" onclick="cropperInst&&cropperInst.rotate(90)" style="font-size:13px">↻ +90°</button>
-        <button class="sbtn" onclick="cropperInst&&cropperInst.zoom(0.1)" style="font-size:13px">🔍+</button>
-        <button class="sbtn" onclick="cropperInst&&cropperInst.zoom(-0.1)" style="font-size:13px">🔍−</button>
-        <button class="sbtn" onclick="cropperInst&&cropperInst.reset()" style="font-size:13px">↺ Сброс</button>
+        <button class="sbtn" onclick="cropAct('rotate',-90)">↺ −90°</button>
+        <button class="sbtn" onclick="cropAct('rotate',90)">↻ +90°</button>
+        <button class="sbtn" onclick="cropAct('zoom',0.1)">🔍+</button>
+        <button class="sbtn" onclick="cropAct('zoom',-0.1)">🔍−</button>
+        <button class="sbtn" onclick="cropAct('reset')">↺ Сброс</button>
       </div>
     </div>
     <div class="mfoot">
@@ -466,15 +430,13 @@ input[type="file"]{display:none}
   </div>
 </div>
 
-<!-- EDIT PROFILE MODAL -->
+<!-- EDIT PROFILE -->
 <div class="movl" id="editmod">
   <div class="modal">
     <div class="mhdr"><h3>Редактировать профиль</h3><button class="mcls" onclick="cMod('editmod')">✕</button></div>
     <div class="mbody">
-      <div class="ef">
-        <label>Фото профиля</label>
-        <div class="avrow">
-          <img id="eap" src="">
+      <div class="ef"><label>Фото профиля</label>
+        <div class="avrow"><img id="eap" src="" alt="">
           <label class="ulbl">📷 Изменить<input type="file" accept="image/*" onchange="triggerCrop(event,'edit')"></label>
         </div>
       </div>
@@ -492,7 +454,7 @@ input[type="file"]{display:none}
   </div>
 </div>
 
-<!-- EDIT POST MODAL -->
+<!-- EDIT POST -->
 <div class="movl" id="editpostmod">
   <div class="modal">
     <div class="mhdr"><h3>✏️ Редактировать пост</h3><button class="mcls" onclick="cMod('editpostmod')">✕</button></div>
@@ -515,25 +477,31 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc, getDocs, addDoc, updateDoc, deleteDoc,
          collection, query, orderBy, limit, onSnapshot, where,
-         serverTimestamp, arrayUnion, arrayRemove, increment, runTransaction }
+         serverTimestamp, arrayUnion, arrayRemove, increment }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-const FB  = initializeApp({apiKey:"AIzaSyC0bH024Yqj4MB8ZNfEYEPvww1az6z3R94",authDomain:"svyaz-social.firebaseapp.com",projectId:"svyaz-social",storageBucket:"svyaz-social.firebasestorage.app",messagingSenderId:"417591966803",appId:"1:417591966803:web:9343069665626c0fae5aa6"});
+const FB = initializeApp({
+  apiKey:"AIzaSyC0bH024Yqj4MB8ZNfEYEPvww1az6z3R94",
+  authDomain:"svyaz-social.firebaseapp.com",
+  projectId:"svyaz-social",
+  storageBucket:"svyaz-social.firebasestorage.app",
+  messagingSenderId:"417591966803",
+  appId:"1:417591966803:web:9343069665626c0fae5aa6"
+});
 const auth = getAuth(FB);
 const db   = getFirestore(FB);
 const CL_CLOUD='ds3x2nnb7', CL_PRESET='ml_default';
 
-// ── STATE ──
-let me=null, myP=null, users=[], pendM=[], activeCU=null, unChat=null, unFeed=null;
+// ─── STATE ───
+let me=null, myP=null, users=[], pendM=[];
+let activeCU=null, unChat=null, unFeed=null;
 let editingPostId=null, replyState={};
 let cropperInst=null, cropTarget=null, eAvaF=null, suAvaF=null;
-// Optimistic local post cache  {postId -> postData}
-let postCache={};
 
-// ── EXPOSE TO WINDOW ──
+// ─── EXPOSE ───
 Object.assign(window,{
   stab,doLogin,doReg,doGoogle,doLogout,
-  doSetup,triggerCrop,applyCrop,cancelCrop,
+  doSetup,triggerCrop,applyCrop,cancelCrop,cropAct,
   gpage,goMyProfile,goPro,openPostPage,
   doPost,pMedia,rmMedia,
   likePost,dislikePost,togComm,sendCom,
@@ -543,12 +511,11 @@ Object.assign(window,{
   togFollow,openChat,sendMsg,sendImgMsg,fChats,
   doSearch,openEditP,doSaveProfile,
   oLb,cLb,oMod,cMod,
-  setTheme,toggleThmPanel,toggleDropMenu,
-  get cropperInst(){return cropperInst;}
+  setTheme,toggleThmPanel,toggleDropMenu,copyLink
 });
 
-// ── THEME ──
-(()=>{const t=localStorage.getItem('svyaz_theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();
+// ─── THEME ───
+(()=>{document.documentElement.setAttribute('data-theme',localStorage.getItem('svyaz_theme')||'dark');})();
 function setTheme(t){document.documentElement.setAttribute('data-theme',t);localStorage.setItem('svyaz_theme',t);g('thm-panel').classList.remove('open');}
 function toggleThmPanel(){g('thm-panel').classList.toggle('open');}
 document.addEventListener('click',e=>{
@@ -556,7 +523,7 @@ document.addEventListener('click',e=>{
   if(!e.target.closest('.pdrop'))document.querySelectorAll('.pdropmenu.open').forEach(m=>m.classList.remove('open'));
 });
 
-// ── AUTH ──
+// ─── AUTH ───
 function stab(t){
   document.querySelectorAll('.atab').forEach((el,i)=>el.classList.toggle('on',(i===0&&t==='login')||(i===1&&t==='reg')));
   g('lform').style.display=t==='login'?'flex':'none';
@@ -580,10 +547,15 @@ async function doReg(){
   catch(ex){aerr(fmsg(ex.code));bl('rbtn',false,'Создать аккаунт');}
 }
 async function doGoogle(){try{await signInWithPopup(auth,new GoogleAuthProvider());}catch(ex){aerr(fmsg(ex.code));}}
-async function doLogout(){if(unFeed)unFeed();if(unChat)unChat();await setOffline();await signOut(auth);}
+async function doLogout(){
+  if(unFeed)unFeed(); if(unChat)unChat();
+  try{await updateDoc(doc(db,'users',me.uid),{online:false,lastSeen:serverTimestamp()});}catch(e){}
+  await signOut(auth);
+}
 
 onAuthStateChanged(auth,async user=>{
-  g('loader').style.opacity='0';setTimeout(()=>g('loader').style.display='none',400);
+  g('loader').style.opacity='0';
+  setTimeout(()=>g('loader').style.display='none',400);
   if(!user){scr('auth');return;}
   me=user;
   const s=await getDoc(doc(db,'users',user.uid));
@@ -591,46 +563,46 @@ onAuthStateChanged(auth,async user=>{
     if(user.displayName)g('su-n').value=user.displayName;
     if(user.photoURL)g('su-ap').src=user.photoURL;
     scr('setup');
-  }else{myP=s.data();await setOnline();launch();}
+  }else{
+    myP=s.data();
+    setOnline();
+    launch();
+  }
 });
-
-// ── ONLINE STATUS ──
-async function setOnline(){
-  try{await updateDoc(doc(db,'users',me.uid),{online:true,lastSeen:serverTimestamp()});}catch(e){}
+function setOnline(){
+  if(!me)return;
+  updateDoc(doc(db,'users',me.uid),{online:true,lastSeen:serverTimestamp()}).catch(()=>{});
 }
-async function setOffline(){
-  try{await updateDoc(doc(db,'users',me.uid),{online:false,lastSeen:serverTimestamp()});}catch(e){}
-}
-window.addEventListener('beforeunload',()=>setOffline());
-// Heartbeat every 60s
-setInterval(()=>{if(me)setOnline();},60000);
+window.addEventListener('beforeunload',()=>{
+  if(me)updateDoc(doc(db,'users',me.uid),{online:false,lastSeen:serverTimestamp()}).catch(()=>{});
+});
+setInterval(()=>{if(me)setOnline();},55000);
 
-// ── CROP (Cropper.js) ──
+// ─── CROP ───
 function triggerCrop(e,target){
-  const f=e.target.files[0];if(!f)return;
+  const f=e.target.files[0]; if(!f)return;
   cropTarget=target;
+  if(cropperInst){cropperInst.destroy();cropperInst=null;}
   const url=URL.createObjectURL(f);
   const imgEl=g('crop-img');
-  // Destroy previous instance
-  if(cropperInst){cropperInst.destroy();cropperInst=null;}
   imgEl.src=url;
   imgEl.onload=()=>{
     cropperInst=new Cropper(imgEl,{
-      aspectRatio:1,
-      viewMode:1,
-      dragMode:'move',
-      autoCropArea:0.85,
-      restore:false,
-      guides:true,
-      center:true,
-      highlight:false,
-      cropBoxMovable:true,
-      cropBoxResizable:true,
+      aspectRatio:1, viewMode:1, dragMode:'move',
+      autoCropArea:0.8, guides:true, center:true,
+      highlight:false, background:true,
+      cropBoxMovable:true, cropBoxResizable:true,
       toggleDragModeOnDblclick:false,
     });
   };
   oMod('crop-modal');
   e.target.value='';
+}
+function cropAct(action,val){
+  if(!cropperInst)return;
+  if(action==='rotate')cropperInst.rotate(val);
+  else if(action==='zoom')cropperInst.zoom(val);
+  else if(action==='reset')cropperInst.reset();
 }
 function cancelCrop(){
   if(cropperInst){cropperInst.destroy();cropperInst=null;}
@@ -638,23 +610,20 @@ function cancelCrop(){
 }
 async function applyCrop(){
   if(!cropperInst)return;
-  bl('crop-apply-btn',true,'Применяем...');
-  try{
-    const canvas=cropperInst.getCroppedCanvas({width:400,height:400,imageSmoothingQuality:'high'});
-    canvas.toBlob(async blob=>{
-      const file=new File([blob],'avatar.jpg',{type:'image/jpeg'});
-      const url=URL.createObjectURL(blob);
-      if(cropTarget==='setup'){suAvaF=file;g('su-ap').src=url;}
-      else if(cropTarget==='edit'){eAvaF=file;g('eap').src=url;}
-      cropperInst.destroy();cropperInst=null;
-      cMod('crop-modal');
-      toast('Фото обрезано! ✅','ok');
-      bl('crop-apply-btn',false,'Применить');
-    },'image/jpeg',0.92);
-  }catch(ex){toast('Ошибка кадрирования','err');bl('crop-apply-btn',false,'Применить');}
+  bl('crop-apply-btn',true,'...');
+  cropperInst.getCroppedCanvas({width:400,height:400,imageSmoothingQuality:'high'}).toBlob(blob=>{
+    const file=new File([blob],'avatar.jpg',{type:'image/jpeg'});
+    const url=URL.createObjectURL(blob);
+    if(cropTarget==='setup'){suAvaF=file;g('su-ap').src=url;}
+    else if(cropTarget==='edit'){eAvaF=file;g('eap').src=url;}
+    cropperInst.destroy();cropperInst=null;
+    cMod('crop-modal');
+    bl('crop-apply-btn',false,'Применить');
+    toast('Фото обрезано! ✅','ok');
+  },'image/jpeg',0.92);
 }
 
-// ── SETUP ──
+// ─── SETUP ───
 async function doSetup(){
   const name=g('su-n').value.trim();
   const uname=g('su-u').value.trim().toLowerCase().replace(/[^a-z0-9_]/g,'');
@@ -668,23 +637,20 @@ async function doSetup(){
     if(suAvaF)ava=await upload(suAvaF);
     const p={uid:me.uid,name,username:uname,dob:g('su-dob').value||'',bio:g('su-b').value.trim(),city:g('su-c').value.trim(),work:'',avatar:ava,cover:'',followers:[],following:[],online:true,lastSeen:serverTimestamp(),createdAt:serverTimestamp()};
     await setDoc(doc(db,'users',me.uid),p);
-    myP=p;launch();
+    myP=p; launch();
   }catch(ex){toast('Ошибка: '+ex.message,'err');bl('su-btn',false,'Начать →');}
 }
 
-// ── LAUNCH ──
+// ─── LAUNCH ───
 async function launch(){
-  scr('app');navAva();
-  await loadUsers();miniUsers();renderPeople();renderChats();startFeed();
+  scr('app'); navAva();
+  await loadUsers(); miniUsers(); renderPeople(); renderChats(); startFeed();
   gpage('feed');
-  // Refresh online status in users list periodically
-  setInterval(async()=>{
-    await loadUsers();miniUsers();
-  },30000);
+  setInterval(async()=>{await loadUsers();miniUsers();},30000);
 }
-function navAva(){const s=myP.avatar||dava(myP.name);g('nava').src=s;g('cava').src=s;}
+function navAva(){const s=myP?.avatar||dava(myP?.name||'?');g('nava').src=s;g('cava').src=s;}
 
-// ── USERS ──
+// ─── USERS ───
 async function loadUsers(){
   const s=await getDocs(collection(db,'users'));
   users=s.docs.map(d=>d.data());
@@ -692,17 +658,16 @@ async function loadUsers(){
 function byUid(uid){return users.find(u=>u.uid===uid);}
 async function ensureUser(uid){
   if(byUid(uid))return;
-  try{const s=await getDoc(doc(db,'users',uid));if(s.exists())users.push(s.data());}catch(e){}
+  try{const s=await getDoc(doc(db,'users',uid));if(s.exists()){users.push(s.data());}}catch(e){}
 }
 
-// ── PAGES ──
+// ─── PAGES ───
 function gpage(n){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
-  const pg=g('page-'+n);if(pg)pg.classList.add('on');
-  // Nav highlight
+  g('page-'+n)?.classList.add('on');
   ['feed','msg','ppl'].forEach(k=>{
     const map={feed:'feed',msg:'messages',ppl:'people'};
-    [g('nb-'+k),g('si-'+k)].forEach(b=>b&&b.classList.toggle('on',map[k]===n));
+    [g('nb-'+k),g('si-'+k)].forEach(b=>b?.classList.toggle('on',map[k]===n));
   });
   g('si-profile')?.classList.toggle('on',n==='profile'||n==='post');
   if(n==='people'){loadUsers().then(()=>{renderPeople();miniUsers();});}
@@ -713,11 +678,10 @@ function goMyProfile(){goPro(me.uid);}
 async function goPro(uid){
   gpage('profile');
   g('profcont').innerHTML='<div style="padding:80px;text-align:center"><div class="spin" style="margin:0 auto"></div></div>';
-  await ensureUser(uid);await loadUsers();
+  await ensureUser(uid); await loadUsers();
   const user=byUid(uid);
   if(!user){g('profcont').innerHTML='<div class="empty"><div class="ei">👤</div><p>Профиль не найден</p></div>';return;}
-  const isMe=uid===me.uid;
-  const isF=(myP.following||[]).includes(uid);
+  const isMe=uid===me.uid, isF=(myP.following||[]).includes(uid);
   let posts=[];
   try{
     const ps=await getDocs(query(collection(db,'posts'),where('authorId','==',uid)));
@@ -725,24 +689,17 @@ async function goPro(uid){
   }catch(ex){}
   const hue=hash(uid)*137%360;
   let ageStr='';
-  if(user.dob){const dob=new Date(user.dob);const age=Math.floor((Date.now()-dob)/(365.25*24*3600*1000));ageStr=age>0?`${age} лет`:'';}
-  const isOnline=user.online===true;
-  const onlineBadge=isOnline
-    ?`<span class="online-badge"><span class="dot"></span>В сети</span>`
-    :`<span class="offline-badge"><span class="dot"></span>${user.lastSeen?'Был(а) '+ago(user.lastSeen):'Не в сети'}</span>`;
-
+  if(user.dob){const age=Math.floor((Date.now()-new Date(user.dob))/(365.25*24*3600*1000));if(age>0)ageStr=`${age} лет`;}
+  const online=user.online===true;
+  const statusHtml=online
+    ?`<span style="font-size:12px;color:var(--ok);display:flex;align-items:center;gap:4px;margin-top:2px"><span style="width:7px;height:7px;border-radius:50%;background:var(--ok);display:inline-block"></span>В сети</span>`
+    :`<span style="font-size:12px;color:var(--txt3);margin-top:2px">${user.lastSeen?'Был(а) '+ago(user.lastSeen):'Не в сети'}</span>`;
   g('profcont').innerHTML=`
-    <div class="pcover">
-      ${user.cover?`<img class="covbg" src="${user.cover}">`:`<div class="covbg" style="background:linear-gradient(135deg,hsl(${hue},55%,18%),hsl(${hue+40},45%,12%))"></div>`}
-    </div>
+    <div class="pcover">${user.cover?`<img class="covbg" src="${user.cover}" alt="">`:`<div class="covbg" style="background:linear-gradient(135deg,hsl(${hue},55%,18%),hsl(${hue+40},45%,12%))"></div>`}</div>
     <div class="pinfobar">
-      <div class="pavawr"><img src="${user.avatar||dava(user.name)}"></div>
+      <div class="pavawr"><img src="${user.avatar||dava(user.name)}" alt=""></div>
       <div class="pdets">
-        <div>
-          <div class="pn">${esc(user.name)}</div>
-          <div class="ph2">@${user.username}</div>
-          ${onlineBadge}
-        </div>
+        <div><div class="pn">${esc(user.name)}</div><div class="ph2">@${user.username}</div>${statusHtml}</div>
         <div class="pacts">
           ${isMe
             ?`<button class="btn" style="padding:9px 18px;font-size:13px;margin-top:0" onclick="openEditP()">✏️ Редактировать</button>`
@@ -758,26 +715,19 @@ async function goPro(uid){
       <div class="ptabs"><div class="ptab on">Записи</div></div>
     </div>
     <div class="pgrid">
-      <div>
-        <div class="psc">
-          <h3>О себе</h3>
-          ${user.bio?`<p style="font-size:14px;color:var(--txt2);margin-bottom:10px">${esc(user.bio)}</p>`:''}
-          ${user.city?`<div class="irow"><span class="ic2">📍</span><span style="color:var(--txt2)">${esc(user.city)}</span></div>`:''}
-          ${user.work?`<div class="irow"><span class="ic2">💼</span><span style="color:var(--txt2)">${esc(user.work)}</span></div>`:''}
-          ${user.dob?`<div class="irow"><span class="ic2">🎂</span><span style="color:var(--txt2)">${new Date(user.dob).toLocaleDateString('ru')}${ageStr?' ('+ageStr+')':''}</span></div>`:''}
-          ${!user.bio&&!user.city&&!user.work&&!user.dob?'<p style="font-size:13px;color:var(--txt3)">Пока ничего не заполнено</p>':''}
-        </div>
-      </div>
-      <div class="feed" style="padding:0;gap:12px">
-        ${posts.length===0?`<div class="empty"><div class="ei">📝</div><p>Нет записей</p></div>`:posts.map(p=>postH(p)).join('')}
-      </div>
+      <div><div class="psc"><h3>О себе</h3>
+        ${user.bio?`<p style="font-size:14px;color:var(--txt2);margin-bottom:10px">${esc(user.bio)}</p>`:''}
+        ${user.city?`<div class="irow"><span class="ic2">📍</span><span style="color:var(--txt2)">${esc(user.city)}</span></div>`:''}
+        ${user.work?`<div class="irow"><span class="ic2">💼</span><span style="color:var(--txt2)">${esc(user.work)}</span></div>`:''}
+        ${user.dob?`<div class="irow"><span class="ic2">🎂</span><span style="color:var(--txt2)">${new Date(user.dob).toLocaleDateString('ru')}${ageStr?' ('+ageStr+')':''}</span></div>`:''}
+        ${!user.bio&&!user.city&&!user.work&&!user.dob?'<p style="font-size:13px;color:var(--txt3)">Пока ничего не заполнено</p>':''}
+      </div></div>
+      <div class="feed" style="padding:0;gap:12px">${posts.length===0?`<div class="empty"><div class="ei">📝</div><p>Нет записей</p></div>`:posts.map(p=>postH(p)).join('')}</div>
     </div>`;
 }
 
-// ── SINGLE POST ──
+// ─── SINGLE POST ───
 async function openPostPage(postId){
-  // Push a history state so "back" works
-  history.pushState({postId},'',`#post-${postId}`);
   gpage('post');
   g('single-post-cont').innerHTML='<div style="padding:60px;text-align:center"><div class="spin" style="margin:0 auto"></div></div>';
   try{
@@ -785,57 +735,54 @@ async function openPostPage(postId){
     if(!snap.exists()){g('single-post-cont').innerHTML='<div class="empty"><div class="ei">🔍</div><p>Пост не найден</p></div>';return;}
     const p={id:snap.id,...snap.data()};
     await ensureUser(p.authorId);
-    // increment views
     updateDoc(doc(db,'posts',postId),{views:increment(1)}).catch(()=>{});
     p.views=(p.views||0)+1;
     g('single-post-cont').innerHTML=postH(p,true);
   }catch(ex){g('single-post-cont').innerHTML='<div class="empty"><div class="ei">⚠️</div><p>Ошибка загрузки</p></div>';}
 }
 
-// ── FEED ──
+// ─── FEED ───
 function startFeed(){
   if(unFeed)unFeed();
   const q=query(collection(db,'posts'),orderBy('createdAt','desc'),limit(60));
   unFeed=onSnapshot(q,async snap=>{
     if(users.length===0)await loadUsers();
     const posts=snap.docs.map(d=>({id:d.id,...d.data()}));
-    // Update cache
-    posts.forEach(p=>{postCache[p.id]=p;});
     const missing=[...new Set(posts.map(p=>p.authorId))].filter(uid=>!byUid(uid));
     if(missing.length)await Promise.all(missing.map(uid=>ensureUser(uid)));
     const el=g('posts');
     if(!el)return;
-    el.innerHTML=posts.map(p=>postH(p)).join('')||'<div class="empty"><div class="ei">📰</div><p>Пока нет постов. Будьте первым!</p></div>';
+    el.innerHTML=posts.length?posts.map(p=>postH(p)).join(''):
+      '<div class="empty"><div class="ei">📰</div><p>Пока нет постов. Будьте первым!</p></div>';
   },err=>{
     g('posts').innerHTML=`<div class="empty"><div class="ei">⚠️</div><p>${err.code==='permission-denied'?'Нет доступа к Firestore':'Ошибка загрузки'}</p></div>`;
   });
 }
 
-// ── POST HTML ──
-function postH(p,showAll=false){
+// ─── POST HTML ───
+function postH(p, showAll=false){
   const a=byUid(p.authorId)||{uid:p.authorId,name:'Пользователь',username:'user',avatar:''};
   const liked=(p.likes||[]).includes(me.uid);
   const disliked=(p.dislikes||[]).includes(me.uid);
   const mn=(p.media||[]).length;
   const mc=mn===1?'single':mn===2?'two':mn>=3?'many':'';
   const isOwn=p.authorId===me.uid;
-  const allComments=p.comments||[];
-  const toShow=showAll?allComments:allComments.slice(-3);
-  const hidden=allComments.length-toShow.length;
+  const allC=p.comments||[];
+  const toShow=showAll?allC:allC.slice(-3);
+  const hidden=allC.length-toShow.length;
   const postUrl=`${location.origin}${location.pathname}#post-${p.id}`;
-
   return `<div class="post" id="post-${p.id}">
     <div class="ph">
-      <img class="pava" src="${a.avatar||dava(a.name)}" onclick="goPro('${a.uid}')">
+      <img class="pava" src="${a.avatar||dava(a.name)}" onclick="goPro('${a.uid}')" alt="">
       <div class="pm">
         <span class="pname" onclick="goPro('${a.uid}')">${esc(a.name)}</span>
-        <div class="ptime">${ago(p.createdAt)}${p.edited?' <span style="font-size:10px;color:var(--txt3)">(ред.)</span>':''}</div>
+        <div class="ptime">${ago(p.createdAt)}${p.edited?' <span style="font-size:10px;opacity:.6">(ред.)</span>':''}</div>
         <div class="pviews">👁 ${p.views||0} просмотров</div>
       </div>
       ${isOwn?`<div class="pdrop">
         <button class="pdropbtn" onclick="toggleDropMenu('pdm-${p.id}')">⋯</button>
         <div class="pdropmenu" id="pdm-${p.id}">
-          <button class="pdropitem" onclick="openEditPost('${p.id}','${esc(p.text||'')}')">✏️ Редактировать</button>
+          <button class="pdropitem" onclick="openEditPost('${p.id}','${esc(p.text||'')}');toggleDropMenu('pdm-${p.id}')">✏️ Редактировать</button>
           <button class="pdropitem" style="color:var(--er)" onclick="delPost('${p.id}')">🗑 Удалить</button>
         </div>
       </div>`:''}
@@ -843,26 +790,26 @@ function postH(p,showAll=false){
     ${p.text?`<div class="ptxt">${linkify(esc(p.text))}</div>`:''}
     ${mn>0?`<div class="pmedia ${mc}">${(p.media||[]).map(m=>m.type==='video'
       ?`<video src="${m.url}" controls onclick="event.stopPropagation()"></video>`
-      :`<img src="${m.url}" onclick="oLb('${m.url}','img')">`).join('')}</div>`:''}
+      :`<img src="${m.url}" onclick="oLb('${m.url}','img')" alt="">`).join('')}</div>`:''}
     <div class="pactions">
-      <button class="acbtn${liked?' lk':''}" id="lbtn-${p.id}" onclick="likePost('${p.id}')">❤️ <span id="lc-${p.id}">${(p.likes||[]).length}</span></button>
-      <button class="acbtn${disliked?' dlk':''}" id="dbtn-${p.id}" onclick="dislikePost('${p.id}')">👎 <span id="dc-${p.id}">${(p.dislikes||[]).length}</span></button>
-      <button class="acbtn" onclick="togComm('${p.id}')">💬 <span id="cc-${p.id}">${allComments.length}</span></button>
+      <button class="acbtn" id="lbtn-${p.id}" data-active="${liked?'like':''}" onclick="likePost('${p.id}')">❤️ <span id="lc-${p.id}">${(p.likes||[]).length}</span></button>
+      <button class="acbtn" id="dbtn-${p.id}" data-active="${disliked?'dislike':''}" onclick="dislikePost('${p.id}')">👎 <span id="dc-${p.id}">${(p.dislikes||[]).length}</span></button>
+      <button class="acbtn" onclick="togComm('${p.id}')">💬 <span id="cc-${p.id}">${allC.length}</span></button>
       <div class="sp2"></div>
-      <button class="plink" onclick="copyPostLink('${postUrl}','${p.id}')">🔗 Ссылка</button>
-      <button class="plink" onclick="openPostPage('${p.id}')">↗ Открыть</button>
+      <button class="plink-btn" onclick="copyLink('${postUrl}')">🔗 Ссылка</button>
+      <button class="plink-btn" onclick="openPostPage('${p.id}')">↗ Открыть</button>
     </div>
     <div class="csec" id="cs-${p.id}" style="display:none">
       <div class="clist-wrap" id="cl-${p.id}">
         ${hidden>0?`<button class="show-more-btn" onclick="openPostPage('${p.id}')">↑ Показать ещё ${hidden} комментариев</button>`:''}
-        ${toShow.map(c=>comH(c,allComments.indexOf(c),p.id)).join('')}
+        ${toShow.map(c=>comH(c,allC.indexOf(c),p.id)).join('')}
       </div>
-      <div class="reply-banner" id="reply-banner-${p.id}">
-        <span id="reply-label-${p.id}"></span>
-        <button onclick="cancelReply('${p.id}')" style="background:none;border:none;color:var(--txt3);cursor:pointer;font-size:16px;margin-left:auto">✕</button>
+      <div class="reply-banner" id="rb-${p.id}">
+        <span id="rl-${p.id}"></span>
+        <button onclick="cancelReply('${p.id}')" style="background:none;border:none;color:var(--txt3);cursor:pointer;font-size:16px;margin-left:auto;line-height:1">✕</button>
       </div>
       <div class="cirow">
-        <img src="${myP.avatar||dava(myP.name)}" style="width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0">
+        <img src="${myP.avatar||dava(myP.name)}" style="width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0" alt="">
         <input class="cinp" placeholder="Комментарий..." id="ci-${p.id}" onkeydown="if(event.key==='Enter')sendCom('${p.id}')">
         <button class="csbtn" onclick="sendCom('${p.id}')">➤</button>
       </div>
@@ -870,77 +817,71 @@ function postH(p,showAll=false){
   </div>`;
 }
 
-// Copy post link to clipboard
-async function copyPostLink(url,postId){
-  try{
-    await navigator.clipboard.writeText(url);
-    toast('Ссылка скопирована! 🔗','ok');
-  }catch(e){
-    // Fallback
-    const ta=document.createElement('textarea');ta.value=url;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();
-    toast('Ссылка скопирована! 🔗','ok');
-  }
-}
-window.copyPostLink=copyPostLink;
-
-// ── COMMENT HTML ──
+// ─── COMMENT HTML ───
 function comH(c,idx,postId){
   const a=byUid(c.authorId)||{uid:c.authorId,name:'Пользователь',avatar:''};
   const lk=(c.likes||[]).includes(me.uid);
   const dlk=(c.dislikes||[]).includes(me.uid);
   const replies=c.replies||[];
-  const safeText=esc(c.text||'');
-  const shortText=esc((c.text||'').slice(0,60));
-  const safeName=esc(a.name||'');
-  return `<div class="citem" id="com-${postId}-${idx}">
-    <img class="cava" src="${a.avatar||dava(a.name)}" onclick="goPro('${a.uid}')">
+  // Safely escape for onclick string attribute
+  const safeName=a.name.replace(/['"\\]/g,'');
+  const safeText=(c.text||'').slice(0,60).replace(/['"\\]/g,'');
+  return `<div class="citem" id="ci-item-${postId}-${idx}">
+    <img class="cava" src="${a.avatar||dava(a.name)}" onclick="goPro('${a.uid}')" alt="">
     <div class="cbody">
       <div class="chdr">
-        <span class="cauth" onclick="goPro('${a.uid}')">${safeName}</span>
+        <span class="cauth" onclick="goPro('${a.uid}')">${esc(a.name)}</span>
         <span class="ctime">${ago(c.createdAt)}</span>
       </div>
       ${c.replyTo?`<div class="reply-quote"><div class="reply-author">${esc(c.replyTo.authorName||'')}</div>${esc((c.replyTo.text||'').slice(0,80))}${(c.replyTo.text||'').length>80?'…':''}</div>`:''}
-      <div class="ctxt">${safeText}</div>
+      <div class="ctxt">${esc(c.text||'')}</div>
       <div class="cactions">
-        <button class="cacbtn${lk?' lk':''}" id="clbtn-${postId}-${idx}" onclick="likeComment('${postId}',${idx})">❤️ <span id="clc-${postId}-${idx}">${(c.likes||[]).length}</span></button>
-        <button class="cacbtn${dlk?' dlk':''}" id="cdbtn-${postId}-${idx}" onclick="dislikeComment('${postId}',${idx})">👎 <span id="cdc-${postId}-${idx}">${(c.dislikes||[]).length}</span></button>
-        <button class="creply-btn" onclick="startReply('${postId}',${idx},'${safeName.replace(/'/g,"\\'")}','${shortText.replace(/'/g,"\\'")}')">↩ Ответить</button>
+        <button class="cacbtn" data-active="${lk?'like':''}" id="clbtn-${postId}-${idx}" onclick="likeComment('${postId}',${idx})">❤️ <span id="clc-${postId}-${idx}">${(c.likes||[]).length}</span></button>
+        <button class="cacbtn" data-active="${dlk?'dislike':''}" id="cdbtn-${postId}-${idx}" onclick="dislikeComment('${postId}',${idx})">👎 <span id="cdc-${postId}-${idx}">${(c.dislikes||[]).length}</span></button>
+        <button class="creply-btn" onclick="startReply('${postId}',${idx},'${safeName}','${safeText}')">↩ Ответить</button>
       </div>
-      ${replies.length>0?`<div class="replies">${replies.map((r,ri)=>replyH(r,ri,idx,postId)).join('')}</div>`:''}
+      ${replies.length?`<div class="replies">${replies.map((r,ri)=>replyH(r,ri,idx,postId)).join('')}</div>`:''}
     </div>
   </div>`;
 }
 
-function replyH(r,ri,parentIdx,postId){
+function replyH(r,ri,pIdx,postId){
   const a=byUid(r.authorId)||{uid:r.authorId,name:'Пользователь',avatar:''};
   const lk=(r.likes||[]).includes(me.uid);
   const dlk=(r.dislikes||[]).includes(me.uid);
   return `<div class="citem">
-    <img class="cava" src="${a.avatar||dava(a.name)}" onclick="goPro('${a.uid}')">
+    <img class="cava" src="${a.avatar||dava(a.name)}" onclick="goPro('${a.uid}')" alt="">
     <div class="cbody">
       <div class="chdr"><span class="cauth" onclick="goPro('${a.uid}')">${esc(a.name)}</span><span class="ctime">${ago(r.createdAt)}</span></div>
       <div class="ctxt">${esc(r.text||'')}</div>
       <div class="cactions">
-        <button class="cacbtn${lk?' lk':''}" onclick="likeReply('${postId}',${parentIdx},${ri})">❤️ ${(r.likes||[]).length}</button>
-        <button class="cacbtn${dlk?' dlk':''}" onclick="dislikeReply('${postId}',${parentIdx},${ri})">👎 ${(r.dislikes||[]).length}</button>
+        <button class="cacbtn" data-active="${lk?'like':''}" onclick="likeReply('${postId}',${pIdx},${ri})">❤️ ${(r.likes||[]).length}</button>
+        <button class="cacbtn" data-active="${dlk?'dislike':''}" onclick="dislikeReply('${postId}',${pIdx},${ri})">👎 ${(r.dislikes||[]).length}</button>
       </div>
     </div>
   </div>`;
 }
 
-// ── MEDIA ──
+// ─── COPY LINK ───
+async function copyLink(url){
+  try{await navigator.clipboard.writeText(url);}
+  catch(e){const t=document.createElement('textarea');t.value=url;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  toast('Ссылка скопирована 🔗','ok');
+}
+
+// ─── MEDIA ───
 function pMedia(e,type){Array.from(e.target.files).forEach(f=>{pendM.push({f,type,prev:URL.createObjectURL(f),id:Date.now()+Math.random()});});rPrev();e.target.value='';}
-function rPrev(){g('mprev').innerHTML=pendM.map(m=>`<div class="mprev-item">${m.type==='video'?`<video src="${m.prev}"></video>`:`<img src="${m.prev}">`}<button class="rmv" onclick="rmMedia(${m.id})">✕</button></div>`).join('');}
+function rPrev(){g('mprev').innerHTML=pendM.map(m=>`<div class="mprev-item">${m.type==='video'?`<video src="${m.prev}"></video>`:`<img src="${m.prev}" alt="">`}<button class="rmv" onclick="rmMedia(${m.id})">✕</button></div>`).join('');}
 function rmMedia(id){pendM=pendM.filter(m=>m.id!=id);rPrev();}
 
-// ── POST ──
+// ─── PUBLISH ───
 async function doPost(){
   const text=g('ptxt').value.trim();
   if(!text&&pendM.length===0)return toast('Напишите что-нибудь','err');
   bl('pbtn',true,'Публикуем...');
   try{
     let media=[];
-    if(pendM.length>0){
+    if(pendM.length){
       g('upbar').style.display='block';
       for(let i=0;i<pendM.length;i++){
         const m=pendM[i];
@@ -950,124 +891,127 @@ async function doPost(){
       g('upbar').style.display='none';
     }
     await addDoc(collection(db,'posts'),{authorId:me.uid,text,media,likes:[],dislikes:[],comments:[],views:0,createdAt:serverTimestamp()});
-    g('ptxt').value='';pendM=[];rPrev();
+    g('ptxt').value=''; pendM=[]; rPrev();
     toast('Опубликовано! 🎉','ok');
   }catch(ex){toast('Ошибка: '+ex.message,'err');g('upbar').style.display='none';}
   bl('pbtn',false,'Опубликовать');
 }
 
-// ── OPTIMISTIC LIKE/DISLIKE ──
-// These update the DOM instantly, then sync to Firestore
+// ─── LIKES — работают напрямую через Firestore, без кеша ───
 async function likePost(id){
-  const cache=postCache[id];if(!cache)return;
-  const liked=(cache.likes||[]).includes(me.uid);
-  // Optimistic update
-  if(liked){cache.likes=cache.likes.filter(x=>x!==me.uid);}
-  else{cache.likes=[...(cache.likes||[]),me.uid];cache.dislikes=(cache.dislikes||[]).filter(x=>x!==me.uid);}
-  _updatePostLikeUI(id,cache);
-  // Firestore
+  const lbtn=g('lbtn-'+id); if(lbtn)lbtn.disabled=true;
   try{
-    const r=doc(db,'posts',id);
-    if(liked)await updateDoc(r,{likes:arrayRemove(me.uid)});
-    else await updateDoc(r,{likes:arrayUnion(me.uid),dislikes:arrayRemove(me.uid)});
-  }catch(e){toast('Ошибка','err');}
+    const snap=await getDoc(doc(db,'posts',id));
+    if(!snap.exists())return;
+    const data=snap.data();
+    const likes=data.likes||[];
+    const dislikes=data.dislikes||[];
+    const liked=likes.includes(me.uid);
+    if(liked){
+      await updateDoc(doc(db,'posts',id),{likes:arrayRemove(me.uid)});
+      _setPostLikeUI(id,likes.filter(x=>x!==me.uid),dislikes,false,dislikes.includes(me.uid));
+    }else{
+      await updateDoc(doc(db,'posts',id),{likes:arrayUnion(me.uid),dislikes:arrayRemove(me.uid)});
+      _setPostLikeUI(id,[...likes,me.uid],dislikes.filter(x=>x!==me.uid),true,false);
+    }
+  }catch(e){console.error(e);}
+  if(lbtn)lbtn.disabled=false;
 }
 async function dislikePost(id){
-  const cache=postCache[id];if(!cache)return;
-  const disliked=(cache.dislikes||[]).includes(me.uid);
-  if(disliked){cache.dislikes=cache.dislikes.filter(x=>x!==me.uid);}
-  else{cache.dislikes=[...(cache.dislikes||[]),me.uid];cache.likes=(cache.likes||[]).filter(x=>x!==me.uid);}
-  _updatePostLikeUI(id,cache);
+  const dbtn=g('dbtn-'+id); if(dbtn)dbtn.disabled=true;
   try{
-    const r=doc(db,'posts',id);
-    if(disliked)await updateDoc(r,{dislikes:arrayRemove(me.uid)});
-    else await updateDoc(r,{dislikes:arrayUnion(me.uid),likes:arrayRemove(me.uid)});
-  }catch(e){toast('Ошибка','err');}
+    const snap=await getDoc(doc(db,'posts',id));
+    if(!snap.exists())return;
+    const data=snap.data();
+    const likes=data.likes||[];
+    const dislikes=data.dislikes||[];
+    const disliked=dislikes.includes(me.uid);
+    if(disliked){
+      await updateDoc(doc(db,'posts',id),{dislikes:arrayRemove(me.uid)});
+      _setPostLikeUI(id,likes,dislikes.filter(x=>x!==me.uid),likes.includes(me.uid),false);
+    }else{
+      await updateDoc(doc(db,'posts',id),{dislikes:arrayUnion(me.uid),likes:arrayRemove(me.uid)});
+      _setPostLikeUI(id,likes.filter(x=>x!==me.uid),[...dislikes,me.uid],false,true);
+    }
+  }catch(e){console.error(e);}
+  if(dbtn)dbtn.disabled=false;
 }
-function _updatePostLikeUI(id,p){
+function _setPostLikeUI(id,likes,dislikes,isLiked,isDisliked){
   const lb=g('lbtn-'+id),db2=g('dbtn-'+id),lc=g('lc-'+id),dc=g('dc-'+id);
-  if(!lb)return;
-  const liked=(p.likes||[]).includes(me.uid);
-  const disliked=(p.dislikes||[]).includes(me.uid);
-  lb.className='acbtn'+(liked?' lk':'');
-  db2.className='acbtn'+(disliked?' dlk':'');
-  if(lc)lc.textContent=(p.likes||[]).length;
-  if(dc)dc.textContent=(p.dislikes||[]).length;
+  if(lb){lb.dataset.active=isLiked?'like':'';}
+  if(db2){db2.dataset.active=isDisliked?'dislike':'';}
+  if(lc)lc.textContent=likes.length;
+  if(dc)dc.textContent=dislikes.length;
 }
 
 function togComm(id){const s=g('cs-'+id);if(s)s.style.display=s.style.display==='none'||!s.style.display?'block':'none';}
 
-// ── EDIT/DELETE POST ──
+// ─── EDIT/DELETE ───
 function toggleDropMenu(id){
   document.querySelectorAll('.pdropmenu.open').forEach(m=>{if(m.id!==id)m.classList.remove('open');});
   g(id)?.classList.toggle('open');
 }
-function openEditPost(postId,currentText){
-  editingPostId=postId;
-  g('edit-post-ta').value=currentText;
-  oMod('editpostmod');
-}
+function openEditPost(postId,txt){editingPostId=postId;g('edit-post-ta').value=txt;oMod('editpostmod');}
 async function doSavePost(){
   if(!editingPostId)return;
   const text=g('edit-post-ta').value.trim();
   if(!text)return toast('Текст не может быть пустым','err');
   bl('save-post-btn',true,'Сохраняем...');
-  try{
-    await updateDoc(doc(db,'posts',editingPostId),{text,edited:true});
-    cMod('editpostmod');editingPostId=null;toast('Пост обновлён','ok');
-  }catch(e){toast('Ошибка','err');}
+  try{await updateDoc(doc(db,'posts',editingPostId),{text,edited:true});cMod('editpostmod');editingPostId=null;toast('Пост обновлён','ok');}
+  catch(e){toast('Ошибка','err');}
   bl('save-post-btn',false,'Сохранить');
 }
 async function delPost(id){
   if(!confirm('Удалить пост?'))return;
-  try{await deleteDoc(doc(db,'posts',id));delete postCache[id];toast('Пост удалён','info');}
+  try{await deleteDoc(doc(db,'posts',id));toast('Пост удалён','info');}
   catch(e){toast('Ошибка удаления','err');}
 }
 
-// ── COMMENTS ──
-function startReply(postId,idx,authorName,text){
-  replyState[postId]={idx,authorName,text};
-  const b=g('reply-banner-'+postId),l=g('reply-label-'+postId);
-  if(b&&l){l.textContent=`↩ Ответ для ${authorName}`;b.style.display='flex';}
-  const inp=g('ci-'+postId);if(inp){inp.placeholder=`Ответить ${authorName}...`;inp.focus();}
+// ─── COMMENTS ───
+function startReply(postId,idx,name,text){
+  replyState[postId]={idx,authorName:name,text};
+  const b=g('rb-'+postId),l=g('rl-'+postId);
+  if(b&&l){l.textContent=`↩ Ответ для ${name}`;b.style.display='flex';}
+  const inp=g('ci-'+postId);if(inp){inp.placeholder=`Ответить ${name}...`;inp.focus();}
 }
 function cancelReply(postId){
   delete replyState[postId];
-  const b=g('reply-banner-'+postId);if(b)b.style.display='none';
+  const b=g('rb-'+postId);if(b)b.style.display='none';
   const inp=g('ci-'+postId);if(inp)inp.placeholder='Комментарий...';
 }
 async function sendCom(postId){
   const inp=g('ci-'+postId);if(!inp||!inp.value.trim())return;
-  const text=inp.value.trim();inp.value='';
+  const text=inp.value.trim(); inp.value='';
   try{
     const snap=await getDoc(doc(db,'posts',postId));
     const comments=[...(snap.data().comments||[])];
-    const rstate=replyState[postId];
-    if(rstate){
-      const pi=rstate.idx;
-      if(comments[pi]){
-        if(!comments[pi].replies)comments[pi].replies=[];
-        comments[pi].replies.push({authorId:me.uid,text,likes:[],dislikes:[],createdAt:Date.now()});
+    const rs=replyState[postId];
+    if(rs){
+      if(comments[rs.idx]){
+        if(!comments[rs.idx].replies)comments[rs.idx].replies=[];
+        comments[rs.idx].replies.push({authorId:me.uid,text,likes:[],dislikes:[],createdAt:Date.now()});
       }
       cancelReply(postId);
     }else{
       comments.push({authorId:me.uid,text,likes:[],dislikes:[],createdAt:Date.now(),replies:[],replyTo:null});
     }
     await updateDoc(doc(db,'posts',postId),{comments});
-    // Update local cache & UI counter
-    if(postCache[postId]){postCache[postId].comments=comments;}
+    // Update counter
     const cc=g('cc-'+postId);if(cc)cc.textContent=comments.length;
-    // Re-render comment list
+    // Re-render comments
     const cl=g('cl-'+postId);
     if(cl){
-      await ensureUser(me.uid);
-      cl.innerHTML=comments.slice(-3).map((c)=>comH(c,comments.indexOf(c),postId)).join('');
+      const toShow=comments.slice(-3);
+      const hidden=comments.length-toShow.length;
+      cl.innerHTML=(hidden>0?`<button class="show-more-btn" onclick="openPostPage('${postId}')">↑ Показать ещё ${hidden} комментариев</button>`:'')+
+        toShow.map(c=>comH(c,comments.indexOf(c),postId)).join('');
     }
   }catch(e){toast('Ошибка отправки','err');console.error(e);}
 }
 
-// ── OPTIMISTIC COMMENT LIKES ──
+// ─── COMMENT LIKES — тоже через getDoc ───
 async function likeComment(postId,idx){
+  const btn=g(`clbtn-${postId}-${idx}`);if(btn)btn.disabled=true;
   try{
     const snap=await getDoc(doc(db,'posts',postId));
     const comments=[...(snap.data().comments||[])];
@@ -1078,16 +1022,17 @@ async function likeComment(postId,idx){
     if(lk)c.likes=c.likes.filter(x=>x!==me.uid);
     else{c.likes=[...c.likes,me.uid];c.dislikes=c.dislikes.filter(x=>x!==me.uid);}
     await updateDoc(doc(db,'posts',postId),{comments});
-    // Update UI
-    const btn=g(`clbtn-${postId}-${idx}`);const cnt=g(`clc-${postId}-${idx}`);
-    const dbtn=g(`cdbtn-${postId}-${idx}`);const dc=g(`cdc-${postId}-${idx}`);
-    if(btn)btn.className='cacbtn'+(c.likes.includes(me.uid)?' lk':'');
-    if(cnt)cnt.textContent=c.likes.length;
-    if(dbtn)dbtn.className='cacbtn'+(c.dislikes.includes(me.uid)?' dlk':'');
+    const lb=g(`clbtn-${postId}-${idx}`),lc=g(`clc-${postId}-${idx}`);
+    const db2=g(`cdbtn-${postId}-${idx}`),dc=g(`cdc-${postId}-${idx}`);
+    if(lb)lb.dataset.active=c.likes.includes(me.uid)?'like':'';
+    if(lc)lc.textContent=c.likes.length;
+    if(db2)db2.dataset.active=c.dislikes.includes(me.uid)?'dislike':'';
     if(dc)dc.textContent=c.dislikes.length;
-  }catch(e){toast('Ошибка','err');}
+  }catch(e){console.error(e);}
+  if(btn)btn.disabled=false;
 }
 async function dislikeComment(postId,idx){
+  const btn=g(`cdbtn-${postId}-${idx}`);if(btn)btn.disabled=true;
   try{
     const snap=await getDoc(doc(db,'posts',postId));
     const comments=[...(snap.data().comments||[])];
@@ -1098,73 +1043,76 @@ async function dislikeComment(postId,idx){
     if(dlk)c.dislikes=c.dislikes.filter(x=>x!==me.uid);
     else{c.dislikes=[...c.dislikes,me.uid];c.likes=c.likes.filter(x=>x!==me.uid);}
     await updateDoc(doc(db,'posts',postId),{comments});
-    const btn=g(`clbtn-${postId}-${idx}`);const cnt=g(`clc-${postId}-${idx}`);
-    const dbtn=g(`cdbtn-${postId}-${idx}`);const dc=g(`cdc-${postId}-${idx}`);
-    if(btn)btn.className='cacbtn'+(c.likes.includes(me.uid)?' lk':'');
-    if(cnt)cnt.textContent=c.likes.length;
-    if(dbtn)dbtn.className='cacbtn'+(c.dislikes.includes(me.uid)?' dlk':'');
+    const lb=g(`clbtn-${postId}-${idx}`),lc=g(`clc-${postId}-${idx}`);
+    const db2=g(`cdbtn-${postId}-${idx}`),dc=g(`cdc-${postId}-${idx}`);
+    if(lb)lb.dataset.active=c.likes.includes(me.uid)?'like':'';
+    if(lc)lc.textContent=c.likes.length;
+    if(db2)db2.dataset.active=c.dislikes.includes(me.uid)?'dislike':'';
     if(dc)dc.textContent=c.dislikes.length;
-  }catch(e){toast('Ошибка','err');}
+  }catch(e){console.error(e);}
+  if(btn)btn.disabled=false;
 }
-async function likeReply(postId,parentIdx,ri){
+async function likeReply(postId,pIdx,ri){
   try{
     const snap=await getDoc(doc(db,'posts',postId));
     const comments=[...(snap.data().comments||[])];
-    const r=comments[parentIdx]?.replies?.[ri];if(!r)return;
+    const r=comments[pIdx]?.replies?.[ri];if(!r)return;
     if(!r.likes)r.likes=[];if(!r.dislikes)r.dislikes=[];
     const lk=r.likes.includes(me.uid);
     if(lk)r.likes=r.likes.filter(x=>x!==me.uid);
     else{r.likes=[...r.likes,me.uid];r.dislikes=r.dislikes.filter(x=>x!==me.uid);}
     await updateDoc(doc(db,'posts',postId),{comments});
-  }catch(e){toast('Ошибка','err');}
+  }catch(e){console.error(e);}
 }
-async function dislikeReply(postId,parentIdx,ri){
+async function dislikeReply(postId,pIdx,ri){
   try{
     const snap=await getDoc(doc(db,'posts',postId));
     const comments=[...(snap.data().comments||[])];
-    const r=comments[parentIdx]?.replies?.[ri];if(!r)return;
+    const r=comments[pIdx]?.replies?.[ri];if(!r)return;
     if(!r.likes)r.likes=[];if(!r.dislikes)r.dislikes=[];
     const dlk=r.dislikes.includes(me.uid);
     if(dlk)r.dislikes=r.dislikes.filter(x=>x!==me.uid);
     else{r.dislikes=[...r.dislikes,me.uid];r.likes=r.likes.filter(x=>x!==me.uid);}
     await updateDoc(doc(db,'posts',postId),{comments});
-  }catch(e){toast('Ошибка','err');}
+  }catch(e){console.error(e);}
 }
 
-// ── FOLLOW ──
+// ─── FOLLOW ───
 async function togFollow(uid){
   const isF=(myP.following||[]).includes(uid);
   try{
     if(isF){
       await updateDoc(doc(db,'users',me.uid),{following:arrayRemove(uid)});
       await updateDoc(doc(db,'users',uid),{followers:arrayRemove(me.uid)});
-      myP.following=(myP.following||[]).filter(x=>x!==uid);toast('Отписались','info');
+      myP.following=(myP.following||[]).filter(x=>x!==uid); toast('Отписались','info');
     }else{
       await updateDoc(doc(db,'users',me.uid),{following:arrayUnion(uid)});
       await updateDoc(doc(db,'users',uid),{followers:arrayUnion(me.uid)});
-      if(!myP.following)myP.following=[];myP.following.push(uid);toast('Подписались!','ok');
+      if(!myP.following)myP.following=[];myP.following.push(uid); toast('Подписались!','ok');
     }
     await loadUsers();
-    [g('fpb-'+uid),g('fp-'+uid)].forEach(b=>{if(b)b.textContent=myP.following.includes(uid)?'✓ Подписан':'+ Подписаться';});
+    [g('fpb-'+uid),g('fp-'+uid)].forEach(b=>{if(b)b.textContent=(myP.following||[]).includes(uid)?'✓ Подписан':'+ Подписаться';});
     if(g('page-people').classList.contains('on'))renderPeople();
     miniUsers();
   }catch(e){toast('Ошибка','err');}
 }
 
-// ── MESSAGES ──
+// ─── MESSAGES ───
 function ckey(a,b){return [a,b].sort().join('_');}
 async function renderChats(){
   if(users.length===0)await loadUsers();
   const others=users.filter(u=>u.uid!==me.uid);
   g('clist-inner').innerHTML=others.map(u=>`
     <div class="citem2 ${activeCU===u.uid?'on':''}" onclick="openChat('${u.uid}')">
-      <div style="position:relative;flex-shrink:0">
-        <img src="${u.avatar||dava(u.name)}" style="width:42px;height:42px;border-radius:50%;object-fit:cover;display:block">
+      <div style="position:relative;flex-shrink:0;width:42px;height:42px">
+        <img src="${u.avatar||dava(u.name)}" style="width:42px;height:42px;border-radius:50%;object-fit:cover" alt="">
         <div style="position:absolute;bottom:1px;right:1px;width:10px;height:10px;border-radius:50%;background:${u.online?'var(--ok)':'var(--txt3)'};border:2px solid var(--sur)"></div>
       </div>
-      <div class="cmeta"><div class="cn">${esc(u.name)}</div><div class="cp" id="cprev-${u.uid}">${u.online?'В сети':'Не в сети'}</div></div>
+      <div class="cmeta">
+        <div class="cn">${esc(u.name)}</div>
+        <div class="cp" id="cprev-${u.uid}">${u.online?'В сети':'Не в сети'}</div>
+      </div>
     </div>`).join('')||'<div style="padding:14px;font-size:13px;color:var(--txt3)">Нет пользователей</div>';
-  // Load last messages
   others.forEach(async u=>{
     try{
       const k=ckey(me.uid,u.uid);
@@ -1173,27 +1121,20 @@ async function renderChats(){
     }catch(e){}
   });
 }
-function fChats(q){
-  document.querySelectorAll('.citem2').forEach(el=>{
-    el.style.display=el.querySelector('.cn').textContent.toLowerCase().includes(q.toLowerCase())?'':'none';
-  });
-}
+function fChats(q){document.querySelectorAll('.citem2').forEach(el=>{el.style.display=el.querySelector('.cn').textContent.toLowerCase().includes(q.toLowerCase())?'':'none';});}
 async function openChat(uid){
   if(unChat)unChat();
-  activeCU=uid;gpage('messages');renderChats();
-  await ensureUser(uid);const user=byUid(uid);if(!user)return;
+  activeCU=uid; gpage('messages'); renderChats();
+  await ensureUser(uid); const user=byUid(uid); if(!user)return;
   const k=ckey(me.uid,uid);
-  const isOnline=user.online===true;
+  const online=user.online===true;
   g('cwin').innerHTML=`
     <div class="cwh">
-      <div style="position:relative">
-        <img src="${user.avatar||dava(user.name)}" style="width:38px;height:38px;border-radius:50%;object-fit:cover">
-        <div style="position:absolute;bottom:0;right:0;width:10px;height:10px;border-radius:50%;background:${isOnline?'var(--ok)':'var(--txt3)'};border:2px solid var(--sur)"></div>
+      <div style="position:relative;flex-shrink:0;width:38px;height:38px">
+        <img src="${user.avatar||dava(user.name)}" style="width:38px;height:38px;border-radius:50%;object-fit:cover" alt="">
+        <div style="position:absolute;bottom:0;right:0;width:9px;height:9px;border-radius:50%;background:${online?'var(--ok)':'var(--txt3)'};border:2px solid var(--sur)"></div>
       </div>
-      <div>
-        <div class="cn2">${esc(user.name)}</div>
-        <div class="cs" style="color:${isOnline?'var(--ok)':'var(--txt3)'}">${isOnline?'● В сети':'○ Не в сети'}</div>
-      </div>
+      <div><div class="cn2">${esc(user.name)}</div><div style="font-size:11px;color:${online?'var(--ok)':'var(--txt3)'}">${online?'● В сети':'○ Не в сети'}</div></div>
     </div>
     <div class="cmsgs" id="cmsgs"></div>
     <div class="cinpbar">
@@ -1209,30 +1150,20 @@ async function openChat(uid){
   });
 }
 function msgH(m){
-  const isOwn=m.from===me.uid;const s=byUid(m.from)||{name:'?',avatar:''};
+  const isOwn=m.from===me.uid; const s=byUid(m.from)||{name:'?',avatar:''};
   return `<div class="mbub ${isOwn?'own':''}">
-    <img class="mav" src="${s.avatar||dava(s.name)}">
+    <img class="mav" src="${s.avatar||dava(s.name)}" alt="">
     <div class="mcon">
-      ${m.image?`<img class="mimg" src="${m.image}" onclick="oLb('${m.image}','img')">`:''}
+      ${m.image?`<img class="mimg" src="${m.image}" onclick="oLb('${m.image}','img')" alt="">`:''}
       ${m.text?`<div class="mtxt">${esc(m.text)}</div>`:''}
       <div class="mtime">${ago(m.createdAt)}</div>
     </div>
   </div>`;
 }
-async function sendMsg(uid){
-  const inp=g('cinp2');if(!inp||!inp.value.trim())return;
-  const text=inp.value.trim();inp.value='';
-  await addDoc(collection(db,'chats',ckey(me.uid,uid),'messages'),{from:me.uid,to:uid,text,createdAt:serverTimestamp()});
-}
-async function sendImgMsg(uid,e){
-  const f=e.target.files[0];if(!f)return;
-  toast('Загружаем...','info');
-  const url=await upload(f);
-  await addDoc(collection(db,'chats',ckey(me.uid,uid),'messages'),{from:me.uid,to:uid,text:'',image:url,createdAt:serverTimestamp()});
-  e.target.value='';
-}
+async function sendMsg(uid){const inp=g('cinp2');if(!inp||!inp.value.trim())return;const t=inp.value.trim();inp.value='';await addDoc(collection(db,'chats',ckey(me.uid,uid),'messages'),{from:me.uid,to:uid,text:t,createdAt:serverTimestamp()});}
+async function sendImgMsg(uid,e){const f=e.target.files[0];if(!f)return;toast('Загружаем...','info');const url=await upload(f);await addDoc(collection(db,'chats',ckey(me.uid,uid),'messages'),{from:me.uid,to:uid,text:'',image:url,createdAt:serverTimestamp()});e.target.value='';}
 
-// ── PEOPLE ──
+// ─── PEOPLE ───
 async function renderPeople(){
   if(users.length===0)await loadUsers();
   const others=users.filter(u=>u.uid!==me.uid);
@@ -1240,17 +1171,17 @@ async function renderPeople(){
   let pc={};
   try{(await getDocs(collection(db,'posts'))).docs.forEach(d=>{const a=d.data().authorId;pc[a]=(pc[a]||0)+1;});}catch(e){}
   g('pgrid').innerHTML=others.map(u=>{
-    const isF=(myP.following||[]).includes(u.uid);const hue=hash(u.uid)*137%360;const isOnline=u.online===true;
+    const isF=(myP.following||[]).includes(u.uid);const hue=hash(u.uid)*137%360;const online=u.online===true;
     return `<div class="pcard">
       <div class="pcov" style="background:linear-gradient(135deg,hsl(${hue},55%,18%),hsl(${hue+40},45%,12%))"></div>
       <div class="pcbody">
         <div style="position:relative;display:inline-block">
-          <img class="pcava" src="${u.avatar||dava(u.name)}" onclick="goPro('${u.uid}')">
-          <div style="position:absolute;bottom:3px;right:3px;width:12px;height:12px;border-radius:50%;background:${isOnline?'var(--ok)':'var(--txt3)'};border:2px solid var(--sur)"></div>
+          <img class="pcava" src="${u.avatar||dava(u.name)}" onclick="goPro('${u.uid}')" alt="">
+          <div style="position:absolute;bottom:4px;right:4px;width:11px;height:11px;border-radius:50%;background:${online?'var(--ok)':'var(--txt3)'};border:2px solid var(--sur)"></div>
         </div>
         <div class="pcname" onclick="goPro('${u.uid}')">${esc(u.name)}</div>
-        <div class="pchan">@${u.username} ${isOnline?'<span style="color:var(--ok);font-size:11px">● В сети</span>':''}</div>
-        <div class="pcst"><span><strong>${pc[u.uid]||0}</strong> постов</span><span><strong>${(u.followers||[]).length}</strong> подп.</span></div>
+        <div class="pchan">@${u.username}${online?' <span style="color:var(--ok);font-size:10px">● В сети</span>':''}</div>
+        <div class="pcst"><span><b>${pc[u.uid]||0}</b> постов</span><span><b>${(u.followers||[]).length}</b> подп.</span></div>
         <div style="display:flex;gap:7px">
           <button class="fbtn" style="flex:1" id="fp-${u.uid}" onclick="togFollow('${u.uid}')">${isF?'✓ Подписан':'+ Подписаться'}</button>
           <button class="cbtn2" onclick="openChat('${u.uid}')">💬</button>
@@ -1260,27 +1191,27 @@ async function renderPeople(){
   }).join('');
 }
 
-// ── MINI USERS ──
+// ─── MINI USERS ───
 function miniUsers(){
   const el=g('umini');if(!el)return;
   const others=users.filter(u=>u.uid!==me.uid).slice(0,7);
   el.innerHTML=others.map(u=>`
     <div class="umini" onclick="openChat('${u.uid}')">
-      <div style="position:relative;flex-shrink:0">
-        <img src="${u.avatar||dava(u.name)}" style="width:30px;height:30px;border-radius:50%;object-fit:cover">
+      <div style="position:relative;flex-shrink:0;width:30px;height:30px">
+        <img src="${u.avatar||dava(u.name)}" style="width:30px;height:30px;border-radius:50%;object-fit:cover" alt="">
         <div style="position:absolute;bottom:0;right:0;width:8px;height:8px;border-radius:50%;background:${u.online?'var(--ok)':'var(--txt3)'};border:2px solid var(--sur)"></div>
       </div>
       <span class="nm">${esc((u.name||'?').split(' ')[0])}</span>
     </div>`).join('')||'<div style="padding:7px 13px;font-size:13px;color:var(--txt3)">Нет пользователей</div>';
 }
 
-// ── EDIT PROFILE ──
+// ─── EDIT PROFILE ───
 function openEditP(){
   g('en').value=myP.name||'';g('eu').value=myP.username||'';
   g('edob').value=myP.dob||'';g('eb').value=myP.bio||'';
   g('ec').value=myP.city||'';g('ew').value=myP.work||'';
   g('eap').src=myP.avatar||dava(myP.name);
-  eAvaF=null;oMod('editmod');
+  eAvaF=null; oMod('editmod');
 }
 async function doSaveProfile(){
   const name=g('en').value.trim(),uname=g('eu').value.trim().toLowerCase().replace(/[^a-z0-9_]/g,'');
@@ -1291,13 +1222,13 @@ async function doSaveProfile(){
     if(eAvaF)ava=await upload(eAvaF);
     const upd={name,username:uname,avatar:ava,dob:g('edob').value||'',bio:g('eb').value.trim(),city:g('ec').value.trim(),work:g('ew').value.trim()};
     await updateDoc(doc(db,'users',me.uid),upd);
-    Object.assign(myP,upd);navAva();cMod('editmod');goPro(me.uid);
-    await loadUsers();miniUsers();toast('Профиль обновлён!','ok');
+    Object.assign(myP,upd); navAva(); cMod('editmod'); goPro(me.uid);
+    await loadUsers(); miniUsers(); toast('Профиль обновлён!','ok');
   }catch(ex){toast('Ошибка: '+ex.message,'err');}
   bl('svbtn',false,'Сохранить');
 }
 
-// ── SEARCH ──
+// ─── SEARCH ───
 let stmr;
 function doSearch(q){
   clearTimeout(stmr);if(!q.trim())return;
@@ -1308,20 +1239,20 @@ function doSearch(q){
   },400);
 }
 
-// ── UPLOAD ──
+// ─── UPLOAD ───
 async function upload(file,onP){
   const fd=new FormData();fd.append('file',file);fd.append('upload_preset',CL_PRESET);
   return new Promise((res,rej)=>{
     const xhr=new XMLHttpRequest();
     xhr.open('POST',`https://api.cloudinary.com/v1_1/${CL_CLOUD}/auto/upload`);
     xhr.upload.onprogress=e=>{if(onP&&e.lengthComputable)onP(e.loaded/e.total*100);};
-    xhr.onload=()=>{const d=JSON.parse(xhr.responseText);if(xhr.status===200)res(d.secure_url);else rej(new Error(d.error?.message||'Upload failed'));};
+    xhr.onload=()=>{try{const d=JSON.parse(xhr.responseText);if(xhr.status===200)res(d.secure_url);else rej(new Error(d.error?.message||'Upload failed'));}catch(e){rej(e);}};
     xhr.onerror=()=>rej(new Error('Network error'));
     xhr.send(fd);
   });
 }
 
-// ── HELPERS ──
+// ─── HELPERS ───
 function scr(n){g('auth').style.display=n==='auth'?'flex':'none';g('setup').style.display=n==='setup'?'flex':'none';g('app').style.display=n==='app'?'block':'none';}
 function g(id){return document.getElementById(id);}
 function oMod(id){g(id)?.classList.add('on');}
@@ -1330,7 +1261,7 @@ function oLb(url,type){
   g('lb').classList.add('on');
   g('lbc').innerHTML=type==='video'
     ?`<video src="${url}" controls autoplay style="max-width:90vw;max-height:85vh;border-radius:12px"></video>`
-    :`<img src="${url}" style="max-width:90vw;max-height:85vh;border-radius:12px" onclick="event.stopPropagation()">`;
+    :`<img src="${url}" style="max-width:90vw;max-height:85vh;border-radius:12px" alt="">`;
 }
 function cLb(){g('lb').classList.remove('on');}
 function toast(msg,type='info'){
@@ -1340,35 +1271,27 @@ function toast(msg,type='info'){
   c.appendChild(t);
   setTimeout(()=>{t.style.opacity='0';t.style.transition='opacity .3s';setTimeout(()=>t.remove(),300);},3500);
 }
-function bl(id,on,lbl){const b=g(id);if(!b)return;b.disabled=on;if(on){b._t=b.textContent;b.textContent=lbl||'⏳...';}else b.textContent=b._t||b.textContent;}
+function bl(id,on,lbl){const b=g(id);if(!b)return;b.disabled=on;if(on){b._t=b.textContent;b.textContent=lbl||'⏳';}else b.textContent=b._t||b.textContent;}
 function ago(ts){
   if(!ts)return '';
   const ms=ts?.toDate?.()?.getTime?.()||ts?.seconds*1000||ts;
   const d=Date.now()-ms;
-  if(d<60000)return 'только что';
-  if(d<3600000)return Math.floor(d/60000)+' мин назад';
-  if(d<86400000)return Math.floor(d/3600000)+' ч назад';
-  if(d<604800000)return Math.floor(d/86400000)+' дн назад';
+  if(d<60000)return 'только что';if(d<3600000)return Math.floor(d/60000)+' мин назад';
+  if(d<86400000)return Math.floor(d/3600000)+' ч назад';if(d<604800000)return Math.floor(d/86400000)+' дн назад';
   return new Date(ms).toLocaleDateString('ru');
 }
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function linkify(s){return s.replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>');}
 function hash(s){let h=0;for(let i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h|=0;}return Math.abs(h);}
 function dava(name='?'){
-  const i=(name||'?').split(' ').map(w=>w[0]||'').join('').toUpperCase().slice(0,2);
+  const i=(name||'?').split(' ').map(w=>w[0]||'').join('').toUpperCase().slice(0,2)||'?';
   const hue=hash(name||'x')%360;
   const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"><rect width="80" height="80" rx="40" fill="hsl(${hue},50%,38%)"/><text x="40" y="54" text-anchor="middle" font-family="sans-serif" font-size="30" font-weight="700" fill="white">${i}</text></svg>`;
   return 'data:image/svg+xml;base64,'+btoa(unescape(encodeURIComponent(svg)));
 }
-function fmsg(c){
-  return({'auth/user-not-found':'Пользователь не найден','auth/wrong-password':'Неверный пароль','auth/invalid-credential':'Неверный email или пароль','auth/email-already-in-use':'Email уже используется','auth/weak-password':'Слабый пароль (мин. 6 символов)','auth/invalid-email':'Неверный email','auth/popup-closed-by-user':'Окно закрыто','auth/too-many-requests':'Слишком много попыток. Подождите.'}[c])||'Ошибка: '+c;
-}
+function fmsg(c){return({'auth/user-not-found':'Пользователь не найден','auth/wrong-password':'Неверный пароль','auth/invalid-credential':'Неверный email или пароль','auth/email-already-in-use':'Email уже используется','auth/weak-password':'Слабый пароль','auth/invalid-email':'Неверный email','auth/popup-closed-by-user':'Окно закрыто','auth/too-many-requests':'Слишком много попыток. Подождите.'}[c])||'Ошибка: '+c;}
 
-// ── URL HASH ROUTING ──
-window.addEventListener('popstate',e=>{
-  if(e.state?.postId&&me)openPostPage(e.state.postId);
-  else if(me)gpage('feed');
-});
+// URL hash routing
 window.addEventListener('load',()=>{
   const m=location.hash.match(/^#post-(.+)$/);
   if(m&&me)openPostPage(m[1]);
